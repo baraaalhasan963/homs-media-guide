@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DirectorTopic } from '../../data/roles/directorStructure';
+import { PRODUCTION_SECTION_1_DATA } from '../../data/roles/directorProductionContentSection1';
 
 interface DirectorProductionViewProps {
   topics: DirectorTopic[];
@@ -60,23 +61,77 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
             </div>
           </div>
 
-          {/* Subtopics List */}
-          {activeTopic.subtopics && activeTopic.subtopics.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-              {activeTopic.subtopics.map((sub, sIdx) => (
-                <div
-                  key={sIdx}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-[#134F47]/[0.03] border border-[#134F47]/15 hover:border-[#134F47]/30 hover:bg-[#134F47]/[0.06] transition-all duration-200"
-                >
-                  <div className="w-6 h-6 rounded-lg bg-[#E85B0D]/15 text-[#E85B0D] flex items-center justify-center text-xs font-black flex-shrink-0">
-                    {sIdx + 1}
+          {/* Content for Section 1: Detailed Subsections */}
+          {activeTopic.id === 'dir-3-1' ? (
+            <div className="space-y-8">
+              {PRODUCTION_SECTION_1_DATA.map((subSec) => (
+                <div key={subSec.id} className="space-y-4">
+                  <h3 className="text-base sm:text-lg font-black text-[#134F47] flex items-center gap-2 pb-2 border-b border-[#134F47]/10">
+                    <span className="w-2 h-2 rounded-full bg-[#E85B0D] flex-shrink-0" />
+                    <span>{subSec.number} {subSec.title}</span>
+                  </h3>
+
+                  {/* Content Paragraphs */}
+                  <div className="space-y-3">
+                    {subSec.content.map((para, pIdx) => (
+                      <p key={pIdx} className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium">
+                        {para}
+                      </p>
+                    ))}
                   </div>
-                  <span className="text-sm sm:text-base font-bold text-[#134F47]">
-                    {sub.replace(/\.$/, '')}
-                  </span>
+
+                  {/* Points List */}
+                  {subSec.points && subSec.points.length > 0 && (
+                    <div className="space-y-3 pt-2">
+                      {subSec.pointsTitle && (
+                        <p className="text-sm sm:text-base font-bold text-[#134F47]">
+                          {subSec.pointsTitle}
+                        </p>
+                      )}
+                      <div className="space-y-2.5 pr-2">
+                        {subSec.points.map((pt, ptIdx) => (
+                          <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
+                            <span className="w-6 h-6 rounded-md bg-[#134F47]/10 text-[#134F47] flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5">
+                              {ptIdx + 1}
+                            </span>
+                            <p>
+                              <strong className="text-[#134F47] font-bold">{pt.title}:</strong>{' '}
+                              <span className="font-medium">{pt.desc}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Note / Concluding Box */}
+                  {subSec.note && (
+                    <div className="p-4 rounded-xl bg-[#134F47]/5 border-r-4 border-[#134F47] text-sm sm:text-base leading-relaxed text-[#134F47] font-medium">
+                      {subSec.note}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
+          ) : (
+            /* Subtopics List for other sections awaiting full text */
+            activeTopic.subtopics && activeTopic.subtopics.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                {activeTopic.subtopics.map((sub, sIdx) => (
+                  <div
+                    key={sIdx}
+                    className="flex items-center gap-3 p-4 rounded-xl bg-[#134F47]/[0.03] border border-[#134F47]/15 hover:border-[#134F47]/30 hover:bg-[#134F47]/[0.06] transition-all duration-200"
+                  >
+                    <div className="w-6 h-6 rounded-lg bg-[#E85B0D]/15 text-[#E85B0D] flex items-center justify-center text-xs font-black flex-shrink-0">
+                      {sIdx + 1}
+                    </div>
+                    <span className="text-sm sm:text-base font-bold text-[#134F47]">
+                      {sub.replace(/\.$/, '')}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )
           )}
         </div>
       )}
