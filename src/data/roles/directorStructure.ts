@@ -105,7 +105,7 @@ export const DIRECTOR_MODULES: DirectorModule[] = [
     title: 'التخطيط والتنظيم',
     topics: [
       { id: 'dir-2-1', title: 'الخطط الإعلامية' },
-      { id: 'dir-2-2', title: 'تقويم المحتوى' },
+      { id: 'dir-2-2', title: 'التخطيط الشهري وجدولة المحتوى' },
       { id: 'dir-2-3', title: 'إدارة الفعاليات' },
       { id: 'dir-2-4', title: 'طلبات التغطية' },
       { id: 'dir-2-5', title: 'التنسيق مع الإدارة المركزية' }
