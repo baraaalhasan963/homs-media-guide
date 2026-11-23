@@ -22,7 +22,7 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
               <button
                 key={topic.id}
                 onClick={() => setSelectedTopicId(topic.id)}
-                className={`flex-1 flex items-center justify-center gap-1.5 px-2.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-200 cursor-pointer whitespace-nowrap text-center flex-shrink-0 ${
+                className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs transition-all duration-200 cursor-pointer whitespace-nowrap text-center flex-shrink-0 ${
                   isSelected
                     ? 'bg-[#134F47] text-[#FFF4E0] shadow-sm font-black'
                     : 'bg-white/70 hover:bg-white text-[#134F47]/80 hover:text-[#134F47] border border-[#134F47]/10 font-bold'
