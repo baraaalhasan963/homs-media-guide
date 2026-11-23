@@ -269,15 +269,16 @@ export const App: React.FC = () => {
 
       {/* Main Content Area */}
       <main className="max-w-5xl w-full mx-auto px-4 md:px-6 py-6 flex-1">
-        <article className="bg-white border border-[#134F47]/15 rounded-3xl shadow-xl p-6 md:p-12 relative overflow-hidden">
-          {/* Subtle Watermark Emblem */}
-          <img 
-            src="assets/images/union-emblem.svg" 
-            alt="" 
-            aria-hidden="true" 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.025] pointer-events-none"
-            onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
-          />
+        <article className="bg-white border border-[#134F47]/15 rounded-3xl shadow-xl p-6 md:p-12 relative">
+          {/* Subtle Watermark Emblem (Isolated in clipped overlay to preserve sticky positioning) */}
+          <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none" aria-hidden="true">
+            <img 
+              src="assets/images/union-emblem.svg" 
+              alt="" 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.025]"
+              onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }}
+            />
+          </div>
 
           <div className="relative z-10">
             {/* Screen View: Active Tab Content */}

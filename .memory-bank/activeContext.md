@@ -41,13 +41,14 @@
     - Section 3 (`3. إدارة الفعاليات`) updated with revised comprehensive text merging coverage requests (3.1 to 3.14).
     - Section 4 (`4. التنسيق مع قسم الإعلام المركزي`) fully populated with official approved content (4.1 to 4.14).
   - Tab 3 (`الإنتاج والتغطية الإعلامية`):
-    - Implemented as interactive sub-tabs navigation (`DirectorProductionView.tsx`) with the 6 core production areas and their respective sub-branches:
-      1. منظومة الإنتاج الإعلامي
-      2. التغطيات الإعلامية
+    - Sub-tabs optimized, shortened to single-row layout, made floating sticky (`sticky top-[68px] sm:top-[74px] z-30`) with backdrop blur (`backdrop-blur-md bg-white/85`), staying pinned smoothly during scroll.
+    - 6 sub-tabs:
+      1. منظومة الإنتاج
+      2. التغطيات
       3. التصوير
       4. صناعة المحتوى
       5. التصميم والمونتاج
-      6. إدارة المواد والأصول الإنتاجية
+      6. إدارة المواد
   - Tabs 4 through 5 remain clean outlines awaiting user text.
 - GitHub Repository & Live Deployment:
   - Repository: `https://github.com/baraaalhasan963/homs-media-guide`

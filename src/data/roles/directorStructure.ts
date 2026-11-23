@@ -116,7 +116,7 @@ export const DIRECTOR_MODULES: DirectorModule[] = [
     topics: [
       {
         id: 'dir-3-1',
-        title: 'منظومة الإنتاج الإعلامي',
+        title: 'منظومة الإنتاج',
         subtopics: [
           'مراحل العمل الإعلامي من الفكرة إلى المادة النهائية.',
           'دورة الإنتاج الإعلامي.',
@@ -126,7 +126,7 @@ export const DIRECTOR_MODULES: DirectorModule[] = [
       },
       {
         id: 'dir-3-2',
-        title: 'التغطيات الإعلامية',
+        title: 'التغطيات',
         subtopics: [
           'التغطيات الميدانية.',
           'التغطيات المباشرة.',
@@ -166,7 +166,7 @@ export const DIRECTOR_MODULES: DirectorModule[] = [
       },
       {
         id: 'dir-3-6',
-        title: 'إدارة المواد والأصول الإنتاجية',
+        title: 'إدارة المواد',
         subtopics: [
           'تنظيم الملفات والمواد الخام.',
           'حفظ المشاريع والملفات القابلة للتعديل.',

@@ -13,29 +13,31 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
 
   return (
     <div className="space-y-6">
-      {/* Sub-tabs Navigation */}
-      <div className="bg-[#134F47]/5 p-2 sm:p-2.5 rounded-2xl border border-[#134F47]/10 flex flex-wrap gap-2">
-        {topics.map((topic, index) => {
-          const isSelected = topic.id === selectedTopicId;
-          return (
-            <button
-              key={topic.id}
-              onClick={() => setSelectedTopicId(topic.id)}
-              className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
-                isSelected
-                  ? 'bg-[#134F47] text-[#FFF4E0] shadow-sm font-black'
-                  : 'bg-white text-[#134F47]/80 hover:text-[#134F47] hover:bg-white/95 border border-[#134F47]/15 font-bold'
-              }`}
-            >
-              <span
-                className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                  isSelected ? 'bg-[#E85B0D]' : 'bg-[#134F47]/30'
+      {/* Floating Sticky Sub-tabs Navigation with Backdrop Blur */}
+      <div className="sticky top-[68px] sm:top-[74px] z-30 py-1 transition-all">
+        <div className="bg-white/85 backdrop-blur-md shadow-lg shadow-[#134F47]/5 border border-[#134F47]/20 p-1.5 sm:p-2 rounded-2xl flex items-center gap-1.5 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-6">
+          {topics.map((topic, index) => {
+            const isSelected = topic.id === selectedTopicId;
+            return (
+              <button
+                key={topic.id}
+                onClick={() => setSelectedTopicId(topic.id)}
+                className={`flex-1 flex items-center justify-center gap-1.5 px-2.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm transition-all duration-200 cursor-pointer whitespace-nowrap text-center flex-shrink-0 ${
+                  isSelected
+                    ? 'bg-[#134F47] text-[#FFF4E0] shadow-sm font-black'
+                    : 'bg-white/70 hover:bg-white text-[#134F47]/80 hover:text-[#134F47] border border-[#134F47]/10 font-bold'
                 }`}
-              />
-              <span>{index + 1}. {topic.title}</span>
-            </button>
-          );
-        })}
+              >
+                <span
+                  className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                    isSelected ? 'bg-[#E85B0D]' : 'bg-[#134F47]/30'
+                  }`}
+                />
+                <span>{index + 1}. {topic.title}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Active Sub-tab Content Card */}
