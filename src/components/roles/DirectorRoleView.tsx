@@ -13,6 +13,7 @@ import { DirectorPlanningSection1View } from './DirectorPlanningSection1View';
 import { DirectorPlanningSection2View } from './DirectorPlanningSection2View';
 import { DirectorPlanningSection3View } from './DirectorPlanningSection3View';
 import { DirectorPlanningSection4View } from './DirectorPlanningSection4View';
+import { DirectorProductionView } from './DirectorProductionView';
 
 interface DirectorRoleViewProps {
   activeTabId: string;
@@ -24,6 +25,20 @@ export const DirectorRoleView: React.FC<DirectorRoleViewProps> = ({
   activeTabId
 }) => {
   const activeModule = getDirectorModuleById(activeTabId) || DIRECTOR_MODULES[0];
+
+  // Tab 3: الإنتاج والتغطية الإعلامية (Rendered as interactive Sub-Tabs)
+  if (activeTabId === 'dir-production') {
+    return (
+      <div className="space-y-6 font-cairo select-none">
+        {/* Main Tab Title */}
+        <h1 className="text-xl sm:text-2xl font-black text-[#134F47] pb-3 border-b border-[#134F47]/15">
+          {activeModule.title}
+        </h1>
+
+        <DirectorProductionView topics={activeModule.topics} />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 font-cairo select-none">
