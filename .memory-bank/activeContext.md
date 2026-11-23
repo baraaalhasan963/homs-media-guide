@@ -35,7 +35,16 @@
     - Item 5 (`5. الصلاحيات وضوابط العمل`) fully populated with official approved content (5.1 to 5.13, 6 framework principles, director & deputy authorities, member rights, platform manager, union head scope, central media role, matrix table, 6-step content workflow & controls, digital security, official statements, professional conduct, emergency guidelines).
     - Item 6 (`6. التنسيق والارتباط الإداري`) fully populated with official approved content (6.1 to 6.11, 3 basic tracks, union head relations, central media coordination, office-to-office cooperation, internal departments coordination, 6-step coverage request workflow, official channels table, conflicting instructions rules, joint projects guidelines, resources & support needs, monthly reporting).
   - All 6 sections of Tab 1 (`إدارة المكتب الإعلامي`) are now 100% complete and fully populated with official content.
-  - Tabs 2 through 5 remain clean outlines awaiting user text for subsequent phases.
+  - Tab 2 (`التخطيط والتنظيم`): 100% Complete
+    - Section 1 (`1. الخطط الإعلامية`) fully populated with official approved content (1.1 to 1.8).
+    - Section 2 (`2. التخطيط الشهري وجدولة المحتوى`) fully populated with official approved content (2.1 to 2.12).
+    - Section 3 (`3. إدارة الفعاليات`) updated with revised comprehensive text merging coverage requests (3.1 to 3.14).
+    - Section 4 (`4. التنسيق مع قسم الإعلام المركزي`) fully populated with official approved content (4.1 to 4.14).
+  - Tabs 3 through 5 remain clean outlines awaiting user text.
+- GitHub Repository & Live Deployment:
+  - Repository: `https://github.com/baraaalhasan963/homs-media-guide`
+  - GitHub Pages Live Site: `https://baraaalhasan963.github.io/homs-media-guide/`
+  - Workflow: Source on `main`, production build automatically deployed to `gh-pages` branch via `npm run deploy`.
     - All badges (including "محتوى معتمد" and pill tags) completely removed per user instruction.
 - Clean TypeScript verification (`npx tsc --noEmit` exited 0).
 - Background dev server active on port 3000.

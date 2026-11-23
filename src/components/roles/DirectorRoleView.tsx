@@ -12,6 +12,7 @@ import { DirectorSection6View } from './DirectorSection6View';
 import { DirectorPlanningSection1View } from './DirectorPlanningSection1View';
 import { DirectorPlanningSection2View } from './DirectorPlanningSection2View';
 import { DirectorPlanningSection3View } from './DirectorPlanningSection3View';
+import { DirectorPlanningSection4View } from './DirectorPlanningSection4View';
 
 interface DirectorRoleViewProps {
   activeTabId: string;
@@ -201,6 +202,25 @@ export const DirectorRoleView: React.FC<DirectorRoleViewProps> = ({
                 </div>
 
                 <DirectorPlanningSection3View />
+              </div>
+            );
+          }
+
+          // Tab 2 - Section 4: التنسيق مع قسم الإعلام المركزي
+          if (topic.id === 'dir-2-4') {
+            return (
+              <div
+                key={topic.id}
+                className="bg-white border-2 border-[#134F47]/20 rounded-2xl p-5 sm:p-7 shadow-sm space-y-6"
+              >
+                <div className="pb-3 border-b border-[#134F47]/15">
+                  <h2 className="text-lg sm:text-xl font-black text-[#134F47] flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#E85B0D] flex-shrink-0" />
+                    <span>{idx + 1}. {topic.title}</span>
+                  </h2>
+                </div>
+
+                <DirectorPlanningSection4View />
               </div>
             );
           }
