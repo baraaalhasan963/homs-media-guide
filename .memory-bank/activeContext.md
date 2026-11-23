@@ -40,7 +40,15 @@
     - Section 2 (`2. التخطيط الشهري وجدولة المحتوى`) fully populated with official approved content (2.1 to 2.12).
     - Section 3 (`3. إدارة الفعاليات`) updated with revised comprehensive text merging coverage requests (3.1 to 3.14).
     - Section 4 (`4. التنسيق مع قسم الإعلام المركزي`) fully populated with official approved content (4.1 to 4.14).
-  - Tabs 3 through 5 remain clean outlines awaiting user text.
+  - Tab 3 (`الإنتاج والتغطية الإعلامية`):
+    - Configured with the exact 6 main topics and their subtopics:
+      1. منظومة الإنتاج الإعلامي (مراحل العمل الإعلامي، دورة الإنتاج الإعلامي، معايير الجودة والمراجعة، التكامل بين الاختصاصات)
+      2. التغطيات الإعلامية (التغطيات الميدانية، التغطيات المباشرة، التغطيات الرسمية والبروتوكولية، التغطيات النوعية والخاصة)
+      3. التصوير (التصوير الفوتوغرافي، التصوير الفيديوغرافي، إعدادات التصوير والتعامل مع المعدات، التكوين البصري والإضاءة والصوت)
+      4. صناعة المحتوى (كتابة المحتوى الإعلامي، المحتوى الإخباري والمؤسسي، المحتوى التوعوي والتفاعلي، السيناريوهات والنصوص الإعلامية)
+      5. التصميم والمونتاج (التصميم الثابت، المونتاج وإنتاج الفيديو، الهوية البصرية والقوالب، الإخراج البصري للمواد الإعلامية)
+      6. إدارة المواد والأصول الإنتاجية (تنظيم الملفات والمواد الخام، حفظ المشاريع والملفات القابلة للتعديل، إدارة القوالب والمكتبات البصرية، تسليم المواد بين أعضاء الفريق وأرشفتها)
+  - Tabs 4 through 5 remain clean outlines awaiting user text.
 - GitHub Repository & Live Deployment:
   - Repository: `https://github.com/baraaalhasan963/homs-media-guide`
   - GitHub Pages Live Site: `https://baraaalhasan963.github.io/homs-media-guide/`

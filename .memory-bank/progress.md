@@ -31,4 +31,5 @@
   - Section 2 (`التخطيط الشهري وجدولة المحتوى`): 2.1 to 2.12.
   - Section 3 (`إدارة الفعاليات`): 3.1 to 3.14 (revised comprehensive coverage management).
   - Section 4 (`التنسيق مع قسم الإعلام المركزي`): 4.1 to 4.14.
+- **Tab 3 (`الإنتاج والتغطية الإعلامية`) structured with the 6 operational topics and their respective sub-branches.**
 - Automated deployment to GitHub Pages (`gh-pages` branch) via `npm run deploy` live at https://baraaalhasan963.github.io/homs-media-guide/
