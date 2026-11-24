@@ -180,12 +180,14 @@ export const DIRECTOR_MODULES: DirectorModule[] = [
     id: 'dir-publishing',
     title: 'النشر وإدارة المنصات',
     topics: [
-      { id: 'dir-4-1', title: 'إدارة الحسابات' },
-      { id: 'dir-4-2', title: 'جدولة المنشورات' },
-      { id: 'dir-4-3', title: 'النشر' },
-      { id: 'dir-4-4', title: 'التفاعل' },
-      { id: 'dir-4-5', title: 'الهوية البصرية' },
-      { id: 'dir-4-6', title: 'قواعد النشر' }
+      { id: 'dir-4-1', title: 'منظومة النشر' },
+      { id: 'dir-4-2', title: 'إدارة الحسابات' },
+      { id: 'dir-4-3', title: 'الجدولة والنشر' },
+      { id: 'dir-4-4', title: 'تكييف المحتوى' },
+      { id: 'dir-4-5', title: 'إدارة التفاعل' },
+      { id: 'dir-4-6', title: 'السمعة المؤسسية' },
+      { id: 'dir-4-7', title: 'حالات الطوارئ' },
+      { id: 'dir-4-8', title: 'الضوابط الختامية' }
     ]
   },
   {

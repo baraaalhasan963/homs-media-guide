@@ -47,14 +47,20 @@
       2. التغطيات (Section 2 populated 100% with subsections 2.1 to 2.10)
       3. التصوير (Section 3 populated 100% with subsections 3.1 to 3.12)
       4. صناعة المحتوى (Section 4 populated 100% with subsections 4.1 to 4.19 + intro & scenario table)
-      1. منظومة الإنتاج (Section 1.1 populated)
-      2. التغطيات (Section 2 populated 100% with subsections 2.1 to 2.10)
-      3. التصوير (Section 3 populated 100% with subsections 3.1 to 3.12)
-      4. صناعة المحتوى (Section 4 populated 100% with subsections 4.1 to 4.19 + intro & scenario table)
       5. التصميم والمونتاج (Section 5 populated 100% with subsections 5.1 to 5.23 + intro & subgroups)
       6. إدارة المواد (Section 6 populated 100% with subsections 6.1 to 6.23 + intro, metadata management, archive architecture, and handover checklists)
-      6. إدارة المواد
-  - Tabs 4 through 5 remain clean outlines awaiting user text.
+  - Tab 4 (`النشر وإدارة المنصات`): 100% Complete & Live
+    - Interactive floating sticky sub-tabs (`sticky top-[68px] sm:top-[74px] z-30`) with `backdrop-blur-md bg-white/85` and responsive single-row layout (`lg:grid-cols-8`).
+    - 8 sub-tabs:
+      1. منظومة النشر (Section 1: 1.1 to 1.7 + Tab 4 Intro)
+      2. إدارة الحسابات (Section 2: 2.1 to 2.11)
+      3. الجدولة والنشر (Section 3: 3.1 to 3.16 + Operational Schedule Table)
+      4. تكييف المحتوى (Section 4: 4.1 to 4.15)
+      5. إدارة التفاعل (Section 5: 5.1 to 5.15)
+      6. السمعة المؤسسية (Section 6: 6.1 to 6.12)
+      7. حالات الطوارئ (Section 7: 7.1 to 7.16)
+      8. الضوابط الختامية (Section 8: 12 mandatory concluding controls)
+  - Tab 5 (`التوثيق والتقييم`) remains clean outline awaiting user text.
 - GitHub Repository & Live Deployment:
   - Repository: `https://github.com/baraaalhasan963/homs-media-guide`
   - GitHub Pages Live Site: `https://baraaalhasan963.github.io/homs-media-guide/`

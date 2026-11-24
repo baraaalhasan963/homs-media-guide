@@ -38,4 +38,14 @@
   - 4. صناعة المحتوى (Section 4: 4.1 to 4.19 complete)
   - 5. التصميم والمونتاج (Section 5: 5.1 to 5.23 complete)
   - 6. إدارة المواد والأصول الإنتاجية (Section 6: 6.1 to 6.23 complete with archive architecture, metadata, and handover checklists)
+- **Tab 4 (`النشر وإدارة المنصات`) is now 100% complete and fully populated with official approved text:**
+  - Structured with 8 single-row interactive floating sub-tabs with backdrop blur:
+    - 1. منظومة النشر (Section 1: 1.1 to 1.7 + Tab 4 Intro)
+    - 2. إدارة الحسابات (Section 2: 2.1 to 2.11)
+    - 3. الجدولة والنشر (Section 3: 3.1 to 3.16 + Operational Schedule Table)
+    - 4. تكييف المحتوى (Section 4: 4.1 to 4.15)
+    - 5. إدارة التفاعل (Section 5: 5.1 to 5.15)
+    - 6. السمعة المؤسسية (Section 6: 6.1 to 6.12)
+    - 7. حالات الطوارئ (Section 7: 7.1 to 7.16)
+    - 8. الضوابط الختامية (Section 8: 12 mandatory concluding controls)
 - Automated deployment to GitHub Pages (`gh-pages` branch) via `npm run deploy` live at https://baraaalhasan963.github.io/homs-media-guide/

@@ -14,6 +14,7 @@ import { DirectorPlanningSection2View } from './DirectorPlanningSection2View';
 import { DirectorPlanningSection3View } from './DirectorPlanningSection3View';
 import { DirectorPlanningSection4View } from './DirectorPlanningSection4View';
 import { DirectorProductionView } from './DirectorProductionView';
+import { DirectorPublishingView } from './DirectorPublishingView';
 
 interface DirectorRoleViewProps {
   activeTabId: string;
@@ -36,6 +37,20 @@ export const DirectorRoleView: React.FC<DirectorRoleViewProps> = ({
         </h1>
 
         <DirectorProductionView topics={activeModule.topics} />
+      </div>
+    );
+  }
+
+  // Tab 4: النشر وإدارة المنصات (Rendered as interactive Sub-Tabs)
+  if (activeTabId === 'dir-publishing') {
+    return (
+      <div className="space-y-6 font-cairo select-none">
+        {/* Main Tab Title */}
+        <h1 className="text-xl sm:text-2xl font-black text-[#134F47] pb-3 border-b border-[#134F47]/15">
+          {activeModule.title}
+        </h1>
+
+        <DirectorPublishingView topics={activeModule.topics} />
       </div>
     );
   }
