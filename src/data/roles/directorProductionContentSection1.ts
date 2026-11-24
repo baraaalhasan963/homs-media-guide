@@ -11,6 +11,7 @@ export interface ProductionTable {
 export interface ProductionSubGroup {
   title: string;
   content?: string[];
+  pointsTitle?: string;
   points?: ProductionPointItem[];
   note?: string;
 }

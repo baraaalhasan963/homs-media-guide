@@ -5,6 +5,7 @@ import { PRODUCTION_SECTION_2_DATA } from '../../data/roles/directorProductionCo
 import { PRODUCTION_SECTION_3_DATA } from '../../data/roles/directorProductionContentSection3';
 import { PRODUCTION_SECTION_4_DATA, PRODUCTION_SECTION_4_INTRO } from '../../data/roles/directorProductionContentSection4';
 import { PRODUCTION_SECTION_5_DATA, PRODUCTION_SECTION_5_INTRO } from '../../data/roles/directorProductionContentSection5';
+import { PRODUCTION_SECTION_6_DATA, PRODUCTION_SECTION_6_INTRO } from '../../data/roles/directorProductionContentSection6';
 
 interface DirectorProductionViewProps {
   topics: DirectorTopic[];
@@ -76,6 +77,11 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
                     {cPara}
                   </p>
                 ))}
+                {grp.pointsTitle && (
+                  <p className="text-xs sm:text-sm font-bold text-[#134F47]">
+                    {grp.pointsTitle}
+                  </p>
+                )}
                 {grp.points && grp.points.length > 0 && (
                   <div className="space-y-2 pr-2">
                     {grp.points.map((pt, ptIdx) => (
@@ -233,6 +239,8 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
             <RenderSubSectionList data={PRODUCTION_SECTION_4_DATA} intro={PRODUCTION_SECTION_4_INTRO} />
           ) : activeTopic.id === 'dir-3-5' ? (
             <RenderSubSectionList data={PRODUCTION_SECTION_5_DATA} intro={PRODUCTION_SECTION_5_INTRO} />
+          ) : activeTopic.id === 'dir-3-6' ? (
+            <RenderSubSectionList data={PRODUCTION_SECTION_6_DATA} intro={PRODUCTION_SECTION_6_INTRO} />
           ) : (
             /* Subtopics List for other sections awaiting full text */
             activeTopic.subtopics && activeTopic.subtopics.length > 0 && (

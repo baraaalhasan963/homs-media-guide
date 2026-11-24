@@ -37,6 +37,5 @@
   - 3. التصوير (Section 3: 3.1 to 3.12 complete)
   - 4. صناعة المحتوى (Section 4: 4.1 to 4.19 complete)
   - 5. التصميم والمونتاج (Section 5: 5.1 to 5.23 complete)
-  - 5. التصميم والمونتاج
-  - 6. إدارة المواد
+  - 6. إدارة المواد والأصول الإنتاجية (Section 6: 6.1 to 6.23 complete with archive architecture, metadata, and handover checklists)
 - Automated deployment to GitHub Pages (`gh-pages` branch) via `npm run deploy` live at https://baraaalhasan963.github.io/homs-media-guide/
