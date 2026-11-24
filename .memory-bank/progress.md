@@ -32,8 +32,8 @@
   - Section 3 (`إدارة الفعاليات`): 3.1 to 3.14 (revised comprehensive coverage management).
   - Section 4 (`التنسيق مع قسم الإعلام المركزي`): 4.1 to 4.14.
 - **Tab 3 (`الإنتاج والتغطية الإعلامية`) structured with the 6 operational topics as single-row interactive sub-tabs:**
-  - 1. منظومة الإنتاج
-  - 2. التغطيات
+  - 1. منظومة الإنتاج (Section 1.1 populated)
+  - 2. التغطيات (Section 2: 2.1 to 2.10 complete)
   - 3. التصوير
   - 4. صناعة المحتوى
   - 5. التصميم والمونتاج

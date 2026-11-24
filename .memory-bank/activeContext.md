@@ -43,8 +43,8 @@
   - Tab 3 (`الإنتاج والتغطية الإعلامية`):
     - Sub-tabs optimized, shortened to single-row layout, made floating sticky (`sticky top-[68px] sm:top-[74px] z-30`) with backdrop blur (`backdrop-blur-md bg-white/85`), staying pinned smoothly during scroll.
     - 6 sub-tabs:
-      1. منظومة الإنتاج
-      2. التغطيات
+      1. منظومة الإنتاج (Section 1.1 populated)
+      2. التغطيات (Section 2 populated 100% with subsections 2.1 to 2.10)
       3. التصوير
       4. صناعة المحتوى
       5. التصميم والمونتاج

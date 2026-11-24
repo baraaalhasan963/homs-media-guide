@@ -1,10 +1,18 @@
+export interface ProductionPointItem {
+  title?: string;
+  desc: string;
+}
+
 export interface ProductionSubSection {
   id: string;
   number: string;
   title: string;
   content: string[];
   pointsTitle?: string;
-  points?: { title: string; desc: string }[];
+  points?: ProductionPointItem[];
+  extraPointsTitle?: string;
+  extraPoints?: ProductionPointItem[];
+  extraNote?: string;
   note?: string;
 }
 

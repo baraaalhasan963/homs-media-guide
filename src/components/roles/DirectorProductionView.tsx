@@ -1,10 +1,93 @@
 import React, { useState } from 'react';
 import { DirectorTopic } from '../../data/roles/directorStructure';
-import { PRODUCTION_SECTION_1_DATA } from '../../data/roles/directorProductionContentSection1';
+import { PRODUCTION_SECTION_1_DATA, ProductionSubSection } from '../../data/roles/directorProductionContentSection1';
+import { PRODUCTION_SECTION_2_DATA } from '../../data/roles/directorProductionContentSection2';
 
 interface DirectorProductionViewProps {
   topics: DirectorTopic[];
 }
+
+const RenderSubSectionList: React.FC<{ data: ProductionSubSection[] }> = ({ data }) => (
+  <div className="space-y-8">
+    {data.map((subSec) => (
+      <div key={subSec.id} className="space-y-4">
+        <h3 className="text-base sm:text-lg font-black text-[#134F47] flex items-center gap-2 pb-2 border-b border-[#134F47]/10">
+          <span className="w-2 h-2 rounded-full bg-[#E85B0D] flex-shrink-0" />
+          <span>{subSec.number} {subSec.title}</span>
+        </h3>
+
+        {/* Content Paragraphs */}
+        <div className="space-y-3">
+          {subSec.content.map((para, pIdx) => (
+            <p key={pIdx} className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium">
+              {para}
+            </p>
+          ))}
+        </div>
+
+        {/* Primary Points List */}
+        {subSec.points && subSec.points.length > 0 && (
+          <div className="space-y-3 pt-2">
+            {subSec.pointsTitle && (
+              <p className="text-sm sm:text-base font-bold text-[#134F47]">
+                {subSec.pointsTitle}
+              </p>
+            )}
+            <div className="space-y-2.5 pr-2">
+              {subSec.points.map((pt, ptIdx) => (
+                <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
+                  <span className="w-6 h-6 rounded-md bg-[#134F47]/10 text-[#134F47] flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5">
+                    {ptIdx + 1}
+                  </span>
+                  <p>
+                    {pt.title && <strong className="text-[#134F47] font-bold">{pt.title}: </strong>}
+                    <span className="font-medium">{pt.desc}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Extra Note (if any, like roles note in 2.4) */}
+        {subSec.extraNote && (
+          <p className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium pt-1">
+            {subSec.extraNote}
+          </p>
+        )}
+
+        {/* Extra Points List (if any, like guidelines in 2.4 or 2.6) */}
+        {subSec.extraPoints && subSec.extraPoints.length > 0 && (
+          <div className="space-y-3 pt-2">
+            {subSec.extraPointsTitle && (
+              <p className="text-sm sm:text-base font-bold text-[#134F47]">
+                {subSec.extraPointsTitle}
+              </p>
+            )}
+            <div className="space-y-2.5 pr-2">
+              {subSec.extraPoints.map((pt, ptIdx) => (
+                <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
+                  <p>
+                    {pt.title && <strong className="text-[#134F47] font-bold">{pt.title}: </strong>}
+                    <span className="font-medium">{pt.desc}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Note / Concluding Box */}
+        {subSec.note && (
+          <div className="p-4 rounded-xl bg-[#134F47]/5 border-r-4 border-[#134F47] text-sm sm:text-base leading-relaxed text-[#134F47] font-medium">
+            {subSec.note}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+);
 
 export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ topics }) => {
   const [selectedTopicId, setSelectedTopicId] = useState<string>(topics[0]?.id || 'dir-3-1');
@@ -61,58 +144,11 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
             </div>
           </div>
 
-          {/* Content for Section 1: Detailed Subsections */}
+          {/* Content rendering based on active sub-tab */}
           {activeTopic.id === 'dir-3-1' ? (
-            <div className="space-y-8">
-              {PRODUCTION_SECTION_1_DATA.map((subSec) => (
-                <div key={subSec.id} className="space-y-4">
-                  <h3 className="text-base sm:text-lg font-black text-[#134F47] flex items-center gap-2 pb-2 border-b border-[#134F47]/10">
-                    <span className="w-2 h-2 rounded-full bg-[#E85B0D] flex-shrink-0" />
-                    <span>{subSec.number} {subSec.title}</span>
-                  </h3>
-
-                  {/* Content Paragraphs */}
-                  <div className="space-y-3">
-                    {subSec.content.map((para, pIdx) => (
-                      <p key={pIdx} className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-
-                  {/* Points List */}
-                  {subSec.points && subSec.points.length > 0 && (
-                    <div className="space-y-3 pt-2">
-                      {subSec.pointsTitle && (
-                        <p className="text-sm sm:text-base font-bold text-[#134F47]">
-                          {subSec.pointsTitle}
-                        </p>
-                      )}
-                      <div className="space-y-2.5 pr-2">
-                        {subSec.points.map((pt, ptIdx) => (
-                          <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
-                            <span className="w-6 h-6 rounded-md bg-[#134F47]/10 text-[#134F47] flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5">
-                              {ptIdx + 1}
-                            </span>
-                            <p>
-                              <strong className="text-[#134F47] font-bold">{pt.title}:</strong>{' '}
-                              <span className="font-medium">{pt.desc}</span>
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Note / Concluding Box */}
-                  {subSec.note && (
-                    <div className="p-4 rounded-xl bg-[#134F47]/5 border-r-4 border-[#134F47] text-sm sm:text-base leading-relaxed text-[#134F47] font-medium">
-                      {subSec.note}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+            <RenderSubSectionList data={PRODUCTION_SECTION_1_DATA} />
+          ) : activeTopic.id === 'dir-3-2' ? (
+            <RenderSubSectionList data={PRODUCTION_SECTION_2_DATA} />
           ) : (
             /* Subtopics List for other sections awaiting full text */
             activeTopic.subtopics && activeTopic.subtopics.length > 0 && (
