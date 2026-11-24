@@ -46,7 +46,7 @@
       1. منظومة الإنتاج (Section 1.1 populated)
       2. التغطيات (Section 2 populated 100% with subsections 2.1 to 2.10)
       3. التصوير (Section 3 populated 100% with subsections 3.1 to 3.12)
-      4. صناعة المحتوى
+      4. صناعة المحتوى (Section 4 populated 100% with subsections 4.1 to 4.19 + intro & scenario table)
       5. التصميم والمونتاج
       6. إدارة المواد
   - Tabs 4 through 5 remain clean outlines awaiting user text.

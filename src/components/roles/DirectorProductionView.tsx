@@ -3,13 +3,25 @@ import { DirectorTopic } from '../../data/roles/directorStructure';
 import { PRODUCTION_SECTION_1_DATA, ProductionSubSection } from '../../data/roles/directorProductionContentSection1';
 import { PRODUCTION_SECTION_2_DATA } from '../../data/roles/directorProductionContentSection2';
 import { PRODUCTION_SECTION_3_DATA } from '../../data/roles/directorProductionContentSection3';
+import { PRODUCTION_SECTION_4_DATA, PRODUCTION_SECTION_4_INTRO } from '../../data/roles/directorProductionContentSection4';
 
 interface DirectorProductionViewProps {
   topics: DirectorTopic[];
 }
 
-const RenderSubSectionList: React.FC<{ data: ProductionSubSection[] }> = ({ data }) => (
+const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: string[] }> = ({ data, intro }) => (
   <div className="space-y-8">
+    {/* Intro Box if present */}
+    {intro && intro.length > 0 && (
+      <div className="p-4 sm:p-5 rounded-2xl bg-[#134F47]/5 border-r-4 border-[#134F47] space-y-2.5">
+        {intro.map((para, i) => (
+          <p key={i} className="text-sm sm:text-base leading-relaxed text-[#134F47] font-bold">
+            {para}
+          </p>
+        ))}
+      </div>
+    )}
+
     {data.map((subSec) => (
       <div key={subSec.id} className="space-y-4">
         <h3 className="text-base sm:text-lg font-black text-[#134F47] flex items-center gap-2 pb-2 border-b border-[#134F47]/10">
@@ -55,6 +67,34 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[] }> = ({ data
           <p className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium pt-1">
             {subSec.extraNote}
           </p>
+        )}
+
+        {/* Table (if any, like scenario table in 4.9) */}
+        {subSec.table && (
+          <div className="overflow-x-auto my-4 rounded-xl border border-[#134F47]/20 shadow-xs">
+            <table className="w-full text-right text-xs sm:text-sm">
+              <thead className="bg-[#134F47] text-[#FFF4E0] font-black">
+                <tr>
+                  {subSec.table.headers.map((h, i) => (
+                    <th key={i} className="py-2.5 px-3 sm:px-4 font-black">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#134F47]/10">
+                {subSec.table.rows.map((row, rIdx) => (
+                  <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-[#134F47]/[0.02]'}>
+                    {row.map((cell, cIdx) => (
+                      <td key={cIdx} className="py-2.5 px-3 sm:px-4 font-bold text-[#134F47]/90">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
 
         {/* Extra Points List (if any, like guidelines in 2.4 or 2.6) */}
@@ -152,6 +192,8 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
             <RenderSubSectionList data={PRODUCTION_SECTION_2_DATA} />
           ) : activeTopic.id === 'dir-3-3' ? (
             <RenderSubSectionList data={PRODUCTION_SECTION_3_DATA} />
+          ) : activeTopic.id === 'dir-3-4' ? (
+            <RenderSubSectionList data={PRODUCTION_SECTION_4_DATA} intro={PRODUCTION_SECTION_4_INTRO} />
           ) : (
             /* Subtopics List for other sections awaiting full text */
             activeTopic.subtopics && activeTopic.subtopics.length > 0 && (

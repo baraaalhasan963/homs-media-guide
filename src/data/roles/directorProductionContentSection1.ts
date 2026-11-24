@@ -3,6 +3,11 @@ export interface ProductionPointItem {
   desc: string;
 }
 
+export interface ProductionTable {
+  headers: string[];
+  rows: string[][];
+}
+
 export interface ProductionSubSection {
   id: string;
   number: string;
@@ -13,6 +18,7 @@ export interface ProductionSubSection {
   extraPointsTitle?: string;
   extraPoints?: ProductionPointItem[];
   extraNote?: string;
+  table?: ProductionTable;
   note?: string;
 }
 
