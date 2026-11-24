@@ -34,7 +34,7 @@
 - **Tab 3 (`الإنتاج والتغطية الإعلامية`) structured with the 6 operational topics as single-row interactive sub-tabs:**
   - 1. منظومة الإنتاج (Section 1.1 populated)
   - 2. التغطيات (Section 2: 2.1 to 2.10 complete)
-  - 3. التصوير
+  - 3. التصوير (Section 3: 3.1 to 3.12 complete)
   - 4. صناعة المحتوى
   - 5. التصميم والمونتاج
   - 6. إدارة المواد

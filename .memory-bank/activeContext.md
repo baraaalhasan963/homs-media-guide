@@ -45,7 +45,7 @@
     - 6 sub-tabs:
       1. منظومة الإنتاج (Section 1.1 populated)
       2. التغطيات (Section 2 populated 100% with subsections 2.1 to 2.10)
-      3. التصوير
+      3. التصوير (Section 3 populated 100% with subsections 3.1 to 3.12)
       4. صناعة المحتوى
       5. التصميم والمونتاج
       6. إدارة المواد

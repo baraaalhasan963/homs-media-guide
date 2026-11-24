@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DirectorTopic } from '../../data/roles/directorStructure';
 import { PRODUCTION_SECTION_1_DATA, ProductionSubSection } from '../../data/roles/directorProductionContentSection1';
 import { PRODUCTION_SECTION_2_DATA } from '../../data/roles/directorProductionContentSection2';
+import { PRODUCTION_SECTION_3_DATA } from '../../data/roles/directorProductionContentSection3';
 
 interface DirectorProductionViewProps {
   topics: DirectorTopic[];
@@ -149,6 +150,8 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
             <RenderSubSectionList data={PRODUCTION_SECTION_1_DATA} />
           ) : activeTopic.id === 'dir-3-2' ? (
             <RenderSubSectionList data={PRODUCTION_SECTION_2_DATA} />
+          ) : activeTopic.id === 'dir-3-3' ? (
+            <RenderSubSectionList data={PRODUCTION_SECTION_3_DATA} />
           ) : (
             /* Subtopics List for other sections awaiting full text */
             activeTopic.subtopics && activeTopic.subtopics.length > 0 && (
