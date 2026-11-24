@@ -8,6 +8,13 @@ export interface ProductionTable {
   rows: string[][];
 }
 
+export interface ProductionSubGroup {
+  title: string;
+  content?: string[];
+  points?: ProductionPointItem[];
+  note?: string;
+}
+
 export interface ProductionSubSection {
   id: string;
   number: string;
@@ -18,6 +25,7 @@ export interface ProductionSubSection {
   extraPointsTitle?: string;
   extraPoints?: ProductionPointItem[];
   extraNote?: string;
+  subGroups?: ProductionSubGroup[];
   table?: ProductionTable;
   note?: string;
 }

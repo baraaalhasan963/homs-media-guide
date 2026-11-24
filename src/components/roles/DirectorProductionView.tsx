@@ -4,6 +4,7 @@ import { PRODUCTION_SECTION_1_DATA, ProductionSubSection } from '../../data/role
 import { PRODUCTION_SECTION_2_DATA } from '../../data/roles/directorProductionContentSection2';
 import { PRODUCTION_SECTION_3_DATA } from '../../data/roles/directorProductionContentSection3';
 import { PRODUCTION_SECTION_4_DATA, PRODUCTION_SECTION_4_INTRO } from '../../data/roles/directorProductionContentSection4';
+import { PRODUCTION_SECTION_5_DATA, PRODUCTION_SECTION_5_INTRO } from '../../data/roles/directorProductionContentSection5';
 
 interface DirectorProductionViewProps {
   topics: DirectorTopic[];
@@ -59,6 +60,42 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {/* SubGroups if present (e.g. in 5.2, 5.5, 5.9, 5.10, 5.14, 5.15, 5.16, 5.21) */}
+        {subSec.subGroups && subSec.subGroups.length > 0 && (
+          <div className="space-y-4 pt-2">
+            {subSec.subGroups.map((grp, gIdx) => (
+              <div key={gIdx} className="p-4 rounded-xl bg-[#134F47]/[0.02] border border-[#134F47]/10 space-y-3">
+                <h4 className="text-sm sm:text-base font-black text-[#134F47] pb-1 border-b border-[#134F47]/10">
+                  {grp.title}
+                </h4>
+                {grp.content && grp.content.map((cPara, cpIdx) => (
+                  <p key={cpIdx} className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium">
+                    {cPara}
+                  </p>
+                ))}
+                {grp.points && grp.points.length > 0 && (
+                  <div className="space-y-2 pr-2">
+                    {grp.points.map((pt, ptIdx) => (
+                      <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
+                        <p>
+                          {pt.title && <strong className="text-[#134F47] font-bold">{pt.title}: </strong>}
+                          <span className="font-medium">{pt.desc}</span>
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {grp.note && (
+                  <p className="text-xs sm:text-sm text-[#134F47]/80 font-medium italic">
+                    {grp.note}
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
         )}
 
@@ -194,6 +231,8 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
             <RenderSubSectionList data={PRODUCTION_SECTION_3_DATA} />
           ) : activeTopic.id === 'dir-3-4' ? (
             <RenderSubSectionList data={PRODUCTION_SECTION_4_DATA} intro={PRODUCTION_SECTION_4_INTRO} />
+          ) : activeTopic.id === 'dir-3-5' ? (
+            <RenderSubSectionList data={PRODUCTION_SECTION_5_DATA} intro={PRODUCTION_SECTION_5_INTRO} />
           ) : (
             /* Subtopics List for other sections awaiting full text */
             activeTopic.subtopics && activeTopic.subtopics.length > 0 && (
