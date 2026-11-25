@@ -1,17 +1,127 @@
-import React, { useState } from 'react';
-import { DirectorTopic } from '../../data/roles/directorStructure';
-import { PRODUCTION_SECTION_1_DATA, ProductionSubSection } from '../../data/roles/directorProductionContentSection1';
+import type React from 'react';
+import { useEffect, useState } from 'react';
+import {
+  PRODUCTION_SECTION_1_DATA,
+  type ProductionSubSection,
+} from '../../data/roles/directorProductionContentSection1';
 import { PRODUCTION_SECTION_2_DATA } from '../../data/roles/directorProductionContentSection2';
 import { PRODUCTION_SECTION_3_DATA } from '../../data/roles/directorProductionContentSection3';
-import { PRODUCTION_SECTION_4_DATA, PRODUCTION_SECTION_4_INTRO } from '../../data/roles/directorProductionContentSection4';
-import { PRODUCTION_SECTION_5_DATA, PRODUCTION_SECTION_5_INTRO } from '../../data/roles/directorProductionContentSection5';
-import { PRODUCTION_SECTION_6_DATA, PRODUCTION_SECTION_6_INTRO } from '../../data/roles/directorProductionContentSection6';
+import {
+  PRODUCTION_SECTION_4_DATA,
+  PRODUCTION_SECTION_4_INTRO,
+} from '../../data/roles/directorProductionContentSection4';
+import {
+  PRODUCTION_SECTION_5_DATA,
+  PRODUCTION_SECTION_5_INTRO,
+} from '../../data/roles/directorProductionContentSection5';
+import {
+  PRODUCTION_SECTION_6_DATA,
+  PRODUCTION_SECTION_6_INTRO,
+} from '../../data/roles/directorProductionContentSection6';
+import type { DirectorTopic } from '../../data/roles/directorStructure';
+import { type OperationalTemplate, TemplateCopyCard } from './shared/TemplateCopyCard';
+import { StickySubTabs } from './shared/StickySubTabs';
+
+const PRODUCTION_CHECKLISTS: Record<'qualityGate' | 'preCoverage' | 'archiveHandover', OperationalTemplate> = {
+  qualityGate: {
+    id: 'tpl-prod-quality-gate',
+    title: 'قائمة فحص الجودة قبل الإرسال للاعتماد المركزي',
+    purpose: 'قائمة تحقق سريعة يراجعها المدير أو مسؤول الاختصاص قبل رفع أي تصميم أو فيديو أو خبر للاعتماد.',
+    fields: [
+      {
+        label: '1. المعلومات واللغة',
+        hint: 'الأسماء والألقاب والتواريخ + خلو النص من الأخطاء الإملائية',
+      },
+      {
+        label: '2. الهوية البصرية',
+        hint: 'الألوان، الخطوط، الشعارات، وهوامش الأمان الصحيحة',
+      },
+      {
+        label: '3. الجودة التقنية',
+        hint: 'وضوح الصوت، ثبات الكادر، ودقة التصدير للمنصة المستهدفة',
+      },
+      {
+        label: '4. الخصوصية والملفات',
+        hint: 'موافقة المصوَّرين + جاهزية النص المرافق (الكابشن)',
+      },
+    ],
+    copyText: `✅ قائمة فحص الجودة قبل الاعتماد المركزي
+[ ] صحة الأسماء والصفات والتواريخ والأرقام.
+[ ] تدقيق اللغة والإملاء وتوافق العنوان مع الكابشن.
+[ ] الالتزام التام بالهوية البصرية والشعارات والألوان المعتمدة.
+[ ] مطابقة المقاسات والجودة التقنية (صوت واضح + صورة حادة).
+[ ] مراعاة الخصوصية وأذونات المقابلات.
+• جاهز للإرسال إلى مجموعة الاعتماد المركزي.`,
+  },
+  preCoverage: {
+    id: 'tpl-prod-pre-coverage',
+    title: 'قائمة جاهزية الميدان والتصوير قبل الفعالية',
+    purpose: 'فحص سريع للعتاد والمعلومات اللوجستية قبل تحرك فريق التغطية إلى موقع الحدث.',
+    fields: [
+      {
+        label: '1. المعدات والطاقة',
+        hint: 'شحن البطاريات، ذاكرة فارغة، مايكروفون، وحامل/مثبت',
+      },
+      {
+        label: '2. التنسيق الميداني',
+        hint: 'اسم منسق الفعالية ورقمه + مكان الفعالية وبرنامجها الزمني',
+      },
+      {
+        label: '3. قائمة اللقطات (Shot List)',
+        hint: 'اللقطات الافتتاحية، الحضور، المنصة، التكريم، والمقابلات',
+      },
+      {
+        label: '4. خطة التسليم المباشر',
+        hint: 'من سيرسل لقطات الستوري الفوري ومتى تُفرز بقية المواد',
+      },
+    ],
+    copyText: `🎒 قائمة جاهزية الميدان قبل الفعالية
+[ ] البطاريات مشحونة بالكامل (+ بطارية احتياطية).
+[ ] بطاقات الذاكرة مهيأة وبمساحة كافية.
+[ ] اختبار الصوت والمايكروفون قبل الانطلاق.
+[ ] تأكيد موقع الفعالية وبرنامجها الزمني ورقم المنسق الميداني.
+[ ] اعتماد قائمة اللقطات الأساسية والضيوف المقرر مقابلتهم.`,
+  },
+  archiveHandover: {
+    id: 'tpl-prod-archive-handover',
+    title: 'قائمة تحقق تسليم المواد والأرشفة بعد الإنتاج',
+    purpose: 'ضمان انتقال المواد الخام والمصدرية والنهائية إلى الأرشيف المشترك فور انتهاء الإنتاج.',
+    fields: [
+      {
+        label: '1. فرز المواد الخام',
+        hint: 'حذف اللقطات التالفة والمكررة وتصنيف الباقي بمجلد 01_خام',
+      },
+      {
+        label: '2. حفظ الملف النهائي والمصدري',
+        hint: 'نسخة جاهزة للنشر + ملف المشروع القابل للتعديل',
+      },
+      {
+        label: '3. التسمية القياسية',
+        hint: 'YYYY-MM-DD_اسم-الفعالية بدون أسماء عشوائية',
+      },
+      {
+        label: '4. إخطار المدير والمنصات',
+        hint: 'مشاركة رابط المجلد في قناة العمل الرسمية',
+      },
+    ],
+    copyText: `📦 قائمة تسليم وأرشفة مواد الفعالية
+• الفعالية: [الاسم] | التاريخ: [YYYY-MM-DD]
+[ ] رفع الصور/الفيديوهات الخام المفرزة في مجلد 01_خام.
+[ ] حفظ المخرجات النهائية في مجلد 03_نهائي_للنشر.
+[ ] حفظ الملفات المصدرية (PSD/PRPROJ) في مجلد 04_مصدري.
+[ ] التحقق من تسمية المجلدات وفق الصيغة القياسية.
+• رابط المجلد الجاهز: [أدخل الرابط]`,
+  },
+};
 
 interface DirectorProductionViewProps {
   topics: DirectorTopic[];
 }
 
-const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: string[] }> = ({ data, intro }) => (
+const RenderSubSectionList: React.FC<{
+  data: ProductionSubSection[];
+  intro?: string[];
+}> = ({ data, intro }) => (
   <div className="space-y-8">
     {/* Intro Box if present */}
     {intro && intro.length > 0 && (
@@ -28,7 +138,9 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
       <div key={subSec.id} className="space-y-4">
         <h3 className="text-base sm:text-lg font-black text-[#134F47] flex items-center gap-2 pb-2 border-b border-[#134F47]/10">
           <span className="w-2 h-2 rounded-full bg-[#E85B0D] flex-shrink-0" />
-          <span>{subSec.number} {subSec.title}</span>
+          <span>
+            {subSec.number} {subSec.title}
+          </span>
         </h3>
 
         {/* Content Paragraphs */}
@@ -44,13 +156,14 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
         {subSec.points && subSec.points.length > 0 && (
           <div className="space-y-3 pt-2">
             {subSec.pointsTitle && (
-              <p className="text-sm sm:text-base font-bold text-[#134F47]">
-                {subSec.pointsTitle}
-              </p>
+              <p className="text-sm sm:text-base font-bold text-[#134F47]">{subSec.pointsTitle}</p>
             )}
             <div className="space-y-2.5 pr-2">
               {subSec.points.map((pt, ptIdx) => (
-                <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
+                <div
+                  key={ptIdx}
+                  className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90"
+                >
                   <span className="w-6 h-6 rounded-md bg-[#134F47]/10 text-[#134F47] flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5">
                     {ptIdx + 1}
                   </span>
@@ -72,20 +185,20 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
                 <h4 className="text-sm sm:text-base font-black text-[#134F47] pb-1 border-b border-[#134F47]/10">
                   {grp.title}
                 </h4>
-                {grp.content && grp.content.map((cPara, cpIdx) => (
-                  <p key={cpIdx} className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium">
-                    {cPara}
-                  </p>
-                ))}
-                {grp.pointsTitle && (
-                  <p className="text-xs sm:text-sm font-bold text-[#134F47]">
-                    {grp.pointsTitle}
-                  </p>
-                )}
+                {grp.content &&
+                  grp.content.map((cPara, cpIdx) => (
+                    <p key={cpIdx} className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium">
+                      {cPara}
+                    </p>
+                  ))}
+                {grp.pointsTitle && <p className="text-xs sm:text-sm font-bold text-[#134F47]">{grp.pointsTitle}</p>}
                 {grp.points && grp.points.length > 0 && (
                   <div className="space-y-2 pr-2">
                     {grp.points.map((pt, ptIdx) => (
-                      <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
+                      <div
+                        key={ptIdx}
+                        className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90"
+                      >
                         <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                         <p>
                           {pt.title && <strong className="text-[#134F47] font-bold">{pt.title}: </strong>}
@@ -95,11 +208,7 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
                     ))}
                   </div>
                 )}
-                {grp.note && (
-                  <p className="text-xs sm:text-sm text-[#134F47]/80 font-medium italic">
-                    {grp.note}
-                  </p>
-                )}
+                {grp.note && <p className="text-xs sm:text-sm text-[#134F47]/80 font-medium italic">{grp.note}</p>}
               </div>
             ))}
           </div>
@@ -107,9 +216,7 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
 
         {/* Extra Note (if any, like roles note in 2.4) */}
         {subSec.extraNote && (
-          <p className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium pt-1">
-            {subSec.extraNote}
-          </p>
+          <p className="text-sm sm:text-base leading-relaxed text-[#134F47]/90 font-medium pt-1">{subSec.extraNote}</p>
         )}
 
         {/* Table (if any, like scenario table in 4.9) */}
@@ -144,13 +251,14 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
         {subSec.extraPoints && subSec.extraPoints.length > 0 && (
           <div className="space-y-3 pt-2">
             {subSec.extraPointsTitle && (
-              <p className="text-sm sm:text-base font-bold text-[#134F47]">
-                {subSec.extraPointsTitle}
-              </p>
+              <p className="text-sm sm:text-base font-bold text-[#134F47]">{subSec.extraPointsTitle}</p>
             )}
             <div className="space-y-2.5 pr-2">
               {subSec.extraPoints.map((pt, ptIdx) => (
-                <div key={ptIdx} className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90">
+                <div
+                  key={ptIdx}
+                  className="flex items-start gap-2.5 text-sm sm:text-base leading-relaxed text-[#134F47]/90"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                   <p>
                     {pt.title && <strong className="text-[#134F47] font-bold">{pt.title}: </strong>}
@@ -173,44 +281,35 @@ const RenderSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: str
   </div>
 );
 
-export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ topics }) => {
+export const DirectorProductionView: React.FC<{
+  topics: DirectorTopic[];
+  externalSubTabId?: string;
+}> = ({ topics, externalSubTabId }) => {
   const [selectedTopicId, setSelectedTopicId] = useState<string>(topics[0]?.id || 'dir-3-1');
+
+  useEffect(() => {
+    if (externalSubTabId && topics.some((t) => t.id === externalSubTabId)) {
+      setSelectedTopicId(externalSubTabId);
+    }
+  }, [externalSubTabId, topics]);
 
   const activeTopic = topics.find((t) => t.id === selectedTopicId) || topics[0];
   const activeIndex = topics.findIndex((t) => t.id === selectedTopicId);
 
   return (
     <div className="space-y-6">
-      {/* Floating Sticky Sub-tabs Navigation with Backdrop Blur */}
-      <div className="sticky top-[68px] sm:top-[74px] z-30 py-1 transition-all">
-        <div className="bg-white/85 backdrop-blur-md shadow-lg shadow-[#134F47]/5 border border-[#134F47]/20 p-1.5 sm:p-2 rounded-2xl flex items-center gap-1.5 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-6">
-          {topics.map((topic, index) => {
-            const isSelected = topic.id === selectedTopicId;
-            return (
-              <button
-                key={topic.id}
-                onClick={() => setSelectedTopicId(topic.id)}
-                className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs transition-all duration-200 cursor-pointer whitespace-nowrap text-center flex-shrink-0 ${
-                  isSelected
-                    ? 'bg-[#134F47] text-[#FFF4E0] shadow-sm font-black'
-                    : 'bg-white/70 hover:bg-white text-[#134F47]/80 hover:text-[#134F47] border border-[#134F47]/10 font-bold'
-                }`}
-              >
-                <span
-                  className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-                    isSelected ? 'bg-[#E85B0D]' : 'bg-[#134F47]/30'
-                  }`}
-                />
-                <span>{index + 1}. {topic.title}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      <StickySubTabs
+        items={topics.map((topic, index) => ({
+          id: topic.id,
+          label: `${index + 1}. ${topic.title}`,
+        }))}
+        activeId={selectedTopicId}
+        onSelect={setSelectedTopicId}
+      />
 
       {/* Active Sub-tab Content Card */}
       {activeTopic && (
-        <div className="bg-white border-2 border-[#134F47]/20 rounded-2xl p-5 sm:p-7 shadow-sm space-y-6">
+        <div key={activeTopic.id} className="bg-white border-2 border-[#134F47]/20 rounded-2xl p-5 sm:p-7 shadow-sm space-y-6 animate-tab-enter">
           {/* Card Header */}
           <div className="flex items-center justify-between pb-4 border-b border-[#134F47]/15">
             <div className="flex items-center gap-3">
@@ -218,32 +317,44 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
                 {activeIndex + 1}
               </div>
               <div>
-                <h2 className="text-lg sm:text-xl font-black text-[#134F47]">
-                  {activeTopic.title}
-                </h2>
-                <p className="text-xs sm:text-sm font-medium text-[#134F47]/70 mt-0.5">
-                  المحاور والأقسام الفرعية
-                </p>
+                <h2 className="text-lg sm:text-xl font-black text-[#134F47]">{activeTopic.title}</h2>
+                <p className="text-xs sm:text-sm font-medium text-[#134F47]/70 mt-0.5">المحاور والأقسام الفرعية</p>
               </div>
             </div>
           </div>
 
           {/* Content rendering based on active sub-tab */}
           {activeTopic.id === 'dir-3-1' ? (
-            <RenderSubSectionList data={PRODUCTION_SECTION_1_DATA} />
+            <div className="space-y-8">
+              <RenderSubSectionList data={PRODUCTION_SECTION_1_DATA} />
+              <TemplateCopyCard template={PRODUCTION_CHECKLISTS.qualityGate} />
+            </div>
           ) : activeTopic.id === 'dir-3-2' ? (
-            <RenderSubSectionList data={PRODUCTION_SECTION_2_DATA} />
+            <div className="space-y-8">
+              <RenderSubSectionList data={PRODUCTION_SECTION_2_DATA} />
+              <TemplateCopyCard template={PRODUCTION_CHECKLISTS.preCoverage} />
+            </div>
           ) : activeTopic.id === 'dir-3-3' ? (
-            <RenderSubSectionList data={PRODUCTION_SECTION_3_DATA} />
+            <div className="space-y-8">
+              <RenderSubSectionList data={PRODUCTION_SECTION_3_DATA} />
+              <TemplateCopyCard template={PRODUCTION_CHECKLISTS.preCoverage} />
+            </div>
           ) : activeTopic.id === 'dir-3-4' ? (
             <RenderSubSectionList data={PRODUCTION_SECTION_4_DATA} intro={PRODUCTION_SECTION_4_INTRO} />
           ) : activeTopic.id === 'dir-3-5' ? (
-            <RenderSubSectionList data={PRODUCTION_SECTION_5_DATA} intro={PRODUCTION_SECTION_5_INTRO} />
+            <div className="space-y-8">
+              <RenderSubSectionList data={PRODUCTION_SECTION_5_DATA} intro={PRODUCTION_SECTION_5_INTRO} />
+              <TemplateCopyCard template={PRODUCTION_CHECKLISTS.qualityGate} />
+            </div>
           ) : activeTopic.id === 'dir-3-6' ? (
-            <RenderSubSectionList data={PRODUCTION_SECTION_6_DATA} intro={PRODUCTION_SECTION_6_INTRO} />
+            <div className="space-y-8">
+              <RenderSubSectionList data={PRODUCTION_SECTION_6_DATA} intro={PRODUCTION_SECTION_6_INTRO} />
+              <TemplateCopyCard template={PRODUCTION_CHECKLISTS.archiveHandover} />
+            </div>
           ) : (
             /* Subtopics List for other sections awaiting full text */
-            activeTopic.subtopics && activeTopic.subtopics.length > 0 && (
+            activeTopic.subtopics &&
+            activeTopic.subtopics.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                 {activeTopic.subtopics.map((sub, sIdx) => (
                   <div
@@ -253,9 +364,7 @@ export const DirectorProductionView: React.FC<DirectorProductionViewProps> = ({ 
                     <div className="w-6 h-6 rounded-lg bg-[#E85B0D]/15 text-[#E85B0D] flex items-center justify-center text-xs font-black flex-shrink-0">
                       {sIdx + 1}
                     </div>
-                    <span className="text-sm sm:text-base font-bold text-[#134F47]">
-                      {sub.replace(/\.$/, '')}
-                    </span>
+                    <span className="text-sm sm:text-base font-bold text-[#134F47]">{sub.replace(/\.$/, '')}</span>
                   </div>
                 ))}
               </div>

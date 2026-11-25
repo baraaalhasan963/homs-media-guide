@@ -54,6 +54,7 @@ export const App: React.FC = () => {
   const [activeMainTab, setActiveMainTab] = useState<string>('home');
   const [activeSubTab, setActiveSubTab] = useState<string>('cover');
   const [activeRoleTabId, setActiveRoleTabId] = useState<string>('');
+  const [activeDirectorSubTab, setActiveDirectorSubTab] = useState<string>('');
 
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -268,8 +269,8 @@ export const App: React.FC = () => {
       </div>
 
       {/* Main Content Area */}
-      <main className="max-w-5xl w-full mx-auto px-4 md:px-6 py-6 flex-1">
-        <article className="bg-white border border-[#134F47]/15 rounded-3xl shadow-xl p-6 md:p-12 relative">
+      <main className="max-w-6xl w-full mx-auto px-4 md:px-6 py-6 flex-1">
+        <article className="bg-white border border-[#134F47]/15 rounded-3xl shadow-xl p-5 sm:p-7 md:p-9 relative">
           {/* Subtle Watermark Emblem (Isolated in clipped overlay to preserve sticky positioning) */}
           <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none" aria-hidden="true">
             <img 
@@ -288,6 +289,7 @@ export const App: React.FC = () => {
               {!isFullAdmin && currentRole === 'director' ? (
                 <DirectorRoleView
                   activeTabId={activeRoleTabId}
+                  activeSubTabId={activeDirectorSubTab}
                   onSelectModule={handleSelectRoleTab}
                   onSwitchRole={handleSwitchRole}
                 />
@@ -409,6 +411,14 @@ export const App: React.FC = () => {
         parts={guideData.parts}
         onSelectSubTab={(sId, mId, sSecId) => handleSelectSubTab(sId, mId, sSecId)}
         onSelectHome={() => handleSelectMainTab('home')}
+        currentRole={currentRole}
+        activeDirectorTabId={activeRoleTabId}
+        activeDirectorSubTabId={activeDirectorSubTab}
+        onSelectDirectorTopic={(moduleId, topicId) => {
+          setActiveRoleTabId(moduleId);
+          setActiveDirectorSubTab(topicId || '');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       />
     </div>
   );

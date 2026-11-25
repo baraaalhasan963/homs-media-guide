@@ -48,4 +48,12 @@
     - 6. السمعة المؤسسية (Section 6: 6.1 to 6.12)
     - 7. حالات الطوارئ (Section 7: 7.1 to 7.16)
     - 8. الضوابط الختامية (Section 8: 12 mandatory concluding controls)
+- **Tab 5 (`التوثيق والتقييم`) is now 100% complete:**
+  - Floating sticky sub-tabs across all 6 sections (`5.1`–`5.6`), KPIs matrix, team evaluation framework, and unified copyable template bank (`directorDocumentationContent.ts`, `DirectorDocumentationView.tsx`).
+- **Director Guide Integrated Reference Upgrade (Phases 1–3 Complete; Phase 4 Deferred):**
+  - Tab 1 (`DirectorManagementView.tsx`): Sticky sub-tabs (`نظرة سريعة` + 6 sections), 7/30-day onboarding roadmap, Quick Decision Compass, crisis escalation tiers, delegation boundaries, equipment custody (`3.15`), RACI matrix (`5.8`), privacy/AI controls (`5.14`), guiding SLAs & conflict scenarios (`6.6`, `6.8`), and 5 copyable templates.
+  - Tab 2 (`DirectorPlanningView.tsx`): Floating sticky sub-tabs + Event Tier Matrix + Monthly Calendar & Event Coverage Plan templates.
+  - Tab 3 (`DirectorProductionView.tsx`): Completed `1.2`–`1.4` in `directorProductionContentSection1.ts` + 3 operational checklists.
+  - Shared UI primitives created under `src/components/roles/shared/` (`StickySubTabs.tsx`, `TemplateCopyCard.tsx`, `DirectorSubSectionRenderer.tsx`).
+  - Live verified in Chrome DevTools (`tsc --noEmit` and `npm run build` both exited 0, 0 console errors).
 - Automated deployment to GitHub Pages (`gh-pages` branch) via `npm run deploy` live at https://baraaalhasan963.github.io/homs-media-guide/

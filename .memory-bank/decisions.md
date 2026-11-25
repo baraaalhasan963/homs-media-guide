@@ -11,3 +11,6 @@
 - **ADR-003 [2026-11-23]:** Unified Sticky Navigation Container:
   - Combined Header and Sub-tabs Navigation inside a single shared `sticky top-0` container.
   - Replaced decoupled sticky offsets (`top-[53px]`) to eliminate visual clipping, jitter, and z-index overlap when scrolling.
+- **ADR-004 [2026-11-25]:** Director Guide Integrated Reference Architecture (Phases 1–3):
+  - Standardized all 5 tabs of the `director` role on shared floating `StickySubTabs` (`src/components/roles/shared/StickySubTabs.tsx`) and `TemplateCopyCard` (`src/components/roles/shared/TemplateCopyCard.tsx`) while keeping all existing approved policy text verbatim and appending supplemental governance tables, guiding SLAs, and copyable templates.
+  - Left `volunteer`, `specialist`, and `admin` roles untouched (under development) and deferred Phase 4 (`SearchModal` director indexing, Tab 4 reply bank, cross-tab link bar) per user directive.

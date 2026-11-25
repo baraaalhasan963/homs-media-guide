@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DirectorTopic } from '../../data/roles/directorStructure';
 import { ProductionSubSection } from '../../data/roles/directorProductionContentSection1';
 import { PUBLISHING_TAB4_INTRO, PUBLISHING_SECTION_1_DATA } from '../../data/roles/directorPublishingContentSection1';
@@ -9,9 +9,11 @@ import { PUBLISHING_SECTION_5_DATA } from '../../data/roles/directorPublishingCo
 import { PUBLISHING_SECTION_6_DATA } from '../../data/roles/directorPublishingContentSection6';
 import { PUBLISHING_SECTION_7_DATA } from '../../data/roles/directorPublishingContentSection7';
 import { PUBLISHING_SECTION_8_DATA } from '../../data/roles/directorPublishingContentSection8';
+import { StickySubTabs } from './shared/StickySubTabs';
 
 interface DirectorPublishingViewProps {
   topics: DirectorTopic[];
+  externalSubTabId?: string;
 }
 
 const RenderPublishingSubSectionList: React.FC<{ data: ProductionSubSection[]; intro?: string[] }> = ({ data, intro }) => (
@@ -176,44 +178,32 @@ const RenderPublishingSubSectionList: React.FC<{ data: ProductionSubSection[]; i
   </div>
 );
 
-export const DirectorPublishingView: React.FC<DirectorPublishingViewProps> = ({ topics }) => {
+export const DirectorPublishingView: React.FC<DirectorPublishingViewProps> = ({ topics, externalSubTabId }) => {
   const [selectedTopicId, setSelectedTopicId] = useState<string>(topics[0]?.id || 'dir-4-1');
+
+  useEffect(() => {
+    if (externalSubTabId && topics.some((t) => t.id === externalSubTabId)) {
+      setSelectedTopicId(externalSubTabId);
+    }
+  }, [externalSubTabId, topics]);
 
   const activeTopic = topics.find((t) => t.id === selectedTopicId) || topics[0];
   const activeIndex = topics.findIndex((t) => t.id === selectedTopicId);
 
   return (
     <div className="space-y-6">
-      {/* Floating Sticky Sub-tabs Navigation with Backdrop Blur */}
-      <div className="sticky top-[68px] sm:top-[74px] z-30 py-1 transition-all">
-        <div className="bg-white/85 backdrop-blur-md shadow-lg shadow-[#134F47]/5 border border-[#134F47]/20 p-1.5 sm:p-2 rounded-2xl flex items-center gap-1.5 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-8">
-          {topics.map((topic, index) => {
-            const isSelected = topic.id === selectedTopicId;
-            return (
-              <button
-                key={topic.id}
-                onClick={() => setSelectedTopicId(topic.id)}
-                className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs transition-all duration-200 cursor-pointer whitespace-nowrap text-center flex-shrink-0 ${
-                  isSelected
-                    ? 'bg-[#134F47] text-[#FFF4E0] shadow-sm font-black'
-                    : 'bg-white/70 hover:bg-white text-[#134F47]/80 hover:text-[#134F47] border border-[#134F47]/10 font-bold'
-                }`}
-              >
-                <span
-                  className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-                    isSelected ? 'bg-[#E85B0D]' : 'bg-[#134F47]/30'
-                  }`}
-                />
-                <span>{index + 1}. {topic.title}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      <StickySubTabs
+        items={topics.map((topic, index) => ({
+          id: topic.id,
+          label: `${index + 1}. ${topic.title}`
+        }))}
+        activeId={selectedTopicId}
+        onSelect={setSelectedTopicId}
+      />
 
       {/* Active Sub-tab Content Card */}
       {activeTopic && (
-        <div className="bg-white border-2 border-[#134F47]/20 rounded-2xl p-5 sm:p-7 shadow-sm space-y-6">
+        <div key={activeTopic.id} className="bg-white border-2 border-[#134F47]/20 rounded-2xl p-5 sm:p-7 shadow-sm space-y-6 animate-tab-enter">
           {/* Card Header */}
           <div className="flex items-center justify-between pb-4 border-b border-[#134F47]/15">
             <div className="flex items-center gap-3">

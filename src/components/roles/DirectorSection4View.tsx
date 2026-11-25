@@ -1,25 +1,26 @@
-import React from 'react';
-import { SECTION_4_CONTENT } from '../../data/roles/directorContentSection4';
 import {
-  Users,
-  ClipboardList,
   Activity,
-  MessageSquare,
-  GraduationCap,
-  Sparkles,
-  BarChart3,
   AlertTriangle,
+  BarChart3,
+  ClipboardList,
+  GraduationCap,
+  MessageSquare,
+  RefreshCw,
   Scale,
+  Sparkles,
   UserPlus,
-  RefreshCw
+  Users,
 } from 'lucide-react';
+import type React from 'react';
+import { SECTION_4_CONTENT } from '../../data/roles/directorContentSection4';
+import { MANAGEMENT_TEMPLATES } from '../../data/roles/directorManagementTemplates';
+import { TemplateCopyCard } from './shared/TemplateCopyCard';
 
 export const DirectorSection4View: React.FC = () => {
   const data = SECTION_4_CONTENT;
 
   return (
     <div className="space-y-6 text-right font-cairo">
-      
       {/* 4.1 مبادئ إدارة الفريق */}
       <section className="bg-white border border-[#134F47]/15 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
         <div>
@@ -27,15 +28,11 @@ export const DirectorSection4View: React.FC = () => {
             <Users className="w-5 h-5 text-[#E85B0D]" />
             <span>4.1 {data.principles.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.principles.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.principles.intro}</p>
         </div>
 
         <div className="pt-2">
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">
-            {data.principles.listIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">{data.principles.listIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.principles.items.map((item, idx) => (
               <div
@@ -48,9 +45,7 @@ export const DirectorSection4View: React.FC = () => {
                   </span>
                   <span>{item.title}</span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#134F47]/80 leading-relaxed pr-7 font-medium">
-                  {item.desc}
-                </p>
+                <p className="text-xs sm:text-sm text-[#134F47]/80 leading-relaxed pr-7 font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -64,18 +59,17 @@ export const DirectorSection4View: React.FC = () => {
             <ClipboardList className="w-5 h-5 text-[#E85B0D]" />
             <span>4.2 {data.taskDistribution.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.taskDistribution.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.taskDistribution.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.taskDistribution.proceduresIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.taskDistribution.proceduresIntro}</p>
           <div className="space-y-2 pr-2">
             {data.taskDistribution.procedures.map((proc, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{proc}</span>
               </div>
@@ -95,15 +89,11 @@ export const DirectorSection4View: React.FC = () => {
             <Activity className="w-5 h-5 text-[#E85B0D]" />
             <span>4.3 {data.dailyOperations.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.dailyOperations.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.dailyOperations.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.dailyOperations.tasksIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.dailyOperations.tasksIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {data.dailyOperations.tasks.map((task, idx) => (
               <div
@@ -131,18 +121,17 @@ export const DirectorSection4View: React.FC = () => {
             <MessageSquare className="w-5 h-5 text-[#E85B0D]" />
             <span>4.4 {data.communicationAndMeetings.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.communicationAndMeetings.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.communicationAndMeetings.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.communicationAndMeetings.orgIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.communicationAndMeetings.orgIntro}</p>
           <div className="space-y-2 pr-2">
             {data.communicationAndMeetings.orgItems.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{item}</span>
               </div>
@@ -181,18 +170,17 @@ export const DirectorSection4View: React.FC = () => {
             <GraduationCap className="w-5 h-5 text-[#E85B0D]" />
             <span>4.5 {data.skillDevelopment.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.skillDevelopment.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.skillDevelopment.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.skillDevelopment.methodsIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.skillDevelopment.methodsIntro}</p>
           <div className="space-y-2 pr-2">
             {data.skillDevelopment.methods.map((method, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{method}</span>
               </div>
@@ -248,9 +236,7 @@ export const DirectorSection4View: React.FC = () => {
             <BarChart3 className="w-5 h-5 text-[#E85B0D]" />
             <span>4.7 {data.performanceEvaluation.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.performanceEvaluation.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.performanceEvaluation.intro}</p>
         </div>
 
         <div>
@@ -276,7 +262,10 @@ export const DirectorSection4View: React.FC = () => {
           </p>
           <div className="space-y-2 pr-2">
             {data.performanceEvaluation.considerations.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-5 h-5 rounded-full bg-[#134F47]/10 text-[#134F47] text-xs font-black flex items-center justify-center flex-shrink-0">
                   {idx + 1}
                 </span>
@@ -298,30 +287,26 @@ export const DirectorSection4View: React.FC = () => {
             <AlertTriangle className="w-5 h-5 text-[#E85B0D]" />
             <span>4.8 {data.handlingNegligence.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.handlingNegligence.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.handlingNegligence.intro}</p>
         </div>
 
         {/* 3 Stages Cards */}
         <div className="space-y-3.5">
           {data.handlingNegligence.stages.map((stg, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-xl border border-[#134F47]/15 bg-[#FFF4E0]/15 space-y-2.5"
-            >
+            <div key={idx} className="p-4 rounded-xl border border-[#134F47]/15 bg-[#FFF4E0]/15 space-y-2.5">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-lg bg-[#134F47] text-white text-xs font-black flex items-center justify-center">
                   {idx + 1}
                 </span>
-                <h4 className="text-sm sm:text-base font-black text-[#134F47]">
-                  {stg.title}
-                </h4>
+                <h4 className="text-sm sm:text-base font-black text-[#134F47]">{stg.title}</h4>
               </div>
 
               <div className="space-y-1.5 pr-8">
                 {stg.items.map((it, iIdx) => (
-                  <div key={iIdx} className="flex items-start gap-2 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+                  <div
+                    key={iIdx}
+                    className="flex items-start gap-2 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+                  >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                     <span>{it}</span>
                   </div>
@@ -343,18 +328,17 @@ export const DirectorSection4View: React.FC = () => {
             <Scale className="w-5 h-5 text-[#E85B0D]" />
             <span>4.9 {data.conflictResolution.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.conflictResolution.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.conflictResolution.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.conflictResolution.stepsIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.conflictResolution.stepsIntro}</p>
           <div className="space-y-2 pr-2">
             {data.conflictResolution.steps.map((st, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-5 h-5 rounded-full bg-[#134F47] text-white text-xs font-black flex items-center justify-center flex-shrink-0">
                   {idx + 1}
                 </span>
@@ -376,18 +360,17 @@ export const DirectorSection4View: React.FC = () => {
             <UserPlus className="w-5 h-5 text-[#E85B0D]" />
             <span>4.10 {data.recruitment.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.recruitment.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.recruitment.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.recruitment.dutiesIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.recruitment.dutiesIntro}</p>
           <div className="space-y-2 pr-2">
             {data.recruitment.duties.map((duty, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{duty}</span>
               </div>
@@ -398,6 +381,8 @@ export const DirectorSection4View: React.FC = () => {
         <p className="text-xs sm:text-sm text-[#134F47]/75 font-medium leading-relaxed pt-1">
           {data.recruitment.closingNote}
         </p>
+
+        <TemplateCopyCard template={MANAGEMENT_TEMPLATES.onboarding} />
       </section>
 
       {/* 4.11 الحفاظ على استمرارية الفريق وانتقال الخبرات */}
@@ -407,9 +392,7 @@ export const DirectorSection4View: React.FC = () => {
             <RefreshCw className="w-5 h-5 text-[#E85B0D]" />
             <span>4.11 {data.continuityAndHandover.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.continuityAndHandover.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.continuityAndHandover.intro}</p>
         </div>
 
         <div>
@@ -418,7 +401,10 @@ export const DirectorSection4View: React.FC = () => {
           </p>
           <div className="space-y-2 pr-2">
             {data.continuityAndHandover.mechanisms.map((mech, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{mech}</span>
               </div>
@@ -430,7 +416,6 @@ export const DirectorSection4View: React.FC = () => {
           {data.continuityAndHandover.absenceProcedure}
         </div>
       </section>
-
     </div>
   );
 };

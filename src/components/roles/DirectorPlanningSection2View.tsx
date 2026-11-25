@@ -1,26 +1,27 @@
-import React from 'react';
-import { PLANNING_SECTION_2_CONTENT } from '../../data/roles/directorPlanningContentSection2';
 import {
-  CalendarDays,
-  Target,
-  ListOrdered,
-  LayoutGrid,
-  FileVideo,
-  Table,
-  Clock,
-  Users2,
   AlertCircle,
+  CalendarDays,
+  CheckCircle2,
+  Clock,
+  FileVideo,
+  LayoutGrid,
+  ListOrdered,
   Repeat,
   Sparkles,
-  CheckCircle2
+  Table,
+  Target,
+  Users2,
 } from 'lucide-react';
+import type React from 'react';
+import { PLANNING_SECTION_2_CONTENT } from '../../data/roles/directorPlanningContentSection2';
+import { PLANNING_TEMPLATES } from '../../data/roles/directorPlanningTemplates';
+import { TemplateCopyCard } from './shared/TemplateCopyCard';
 
 export const DirectorPlanningSection2View: React.FC = () => {
   const data = PLANNING_SECTION_2_CONTENT;
 
   return (
     <div className="space-y-6 text-right font-cairo">
-      
       {/* 2.1 مفهوم التخطيط الشهري للمحتوى */}
       <section className="bg-white border border-[#134F47]/15 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
         <div>
@@ -43,9 +44,7 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <Target className="w-5 h-5 text-[#E85B0D]" />
             <span>2.2 {data.goals.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">
-            {data.goals.intro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">{data.goals.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -70,19 +69,18 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <ListOrdered className="w-5 h-5 text-[#E85B0D]" />
             <span>2.3 {data.monthlyPlanPreparation.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.monthlyPlanPreparation.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.monthlyPlanPreparation.intro}</p>
         </div>
 
         {/* Basis items */}
         <div className="p-4 rounded-xl border border-[#134F47]/15 bg-[#FFF4E0]/20 space-y-2.5">
-          <p className="text-xs sm:text-sm font-bold text-[#134F47]">
-            {data.monthlyPlanPreparation.basisIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47]">{data.monthlyPlanPreparation.basisIntro}</p>
           <div className="space-y-1.5 pr-2">
             {data.monthlyPlanPreparation.basisItems.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{item}</span>
               </div>
@@ -92,9 +90,7 @@ export const DirectorPlanningSection2View: React.FC = () => {
 
         {/* Steps */}
         <div className="pt-2 border-t border-[#134F47]/10">
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">
-            {data.monthlyPlanPreparation.stepsIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">{data.monthlyPlanPreparation.stepsIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             {data.monthlyPlanPreparation.steps.map((st, idx) => (
               <div
@@ -118,24 +114,17 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <LayoutGrid className="w-5 h-5 text-[#E85B0D]" />
             <span>2.4 {data.contentClassification.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.contentClassification.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.contentClassification.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {data.contentClassification.categories.map((cat, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-xl bg-[#FFF4E0]/25 border border-[#134F47]/10 flex flex-col gap-1.5"
-            >
+            <div key={idx} className="p-4 rounded-xl bg-[#FFF4E0]/25 border border-[#134F47]/10 flex flex-col gap-1.5">
               <div className="flex items-center gap-2 font-black text-xs sm:text-sm text-[#134F47]">
                 <span className="w-2 h-2 rounded-full bg-[#E85B0D]" />
                 <span>{cat.title}</span>
               </div>
-              <p className="text-xs sm:text-sm text-[#134F47]/80 leading-relaxed font-medium pr-3.5">
-                {cat.desc}
-              </p>
+              <p className="text-xs sm:text-sm text-[#134F47]/80 leading-relaxed font-medium pr-3.5">{cat.desc}</p>
             </div>
           ))}
         </div>
@@ -152,15 +141,11 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <FileVideo className="w-5 h-5 text-[#E85B0D]" />
             <span>2.5 {data.formatsAndPlatforms.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.formatsAndPlatforms.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.formatsAndPlatforms.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.formatsAndPlatforms.formatsIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.formatsAndPlatforms.formatsIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             {data.formatsAndPlatforms.formats.map((fmt, idx) => (
               <div
@@ -175,12 +160,13 @@ export const DirectorPlanningSection2View: React.FC = () => {
         </div>
 
         <div className="pt-2 border-t border-[#134F47]/10">
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.formatsAndPlatforms.criteriaIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.formatsAndPlatforms.criteriaIntro}</p>
           <div className="space-y-2 pr-2">
             {data.formatsAndPlatforms.criteria.map((crit, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-5 h-5 rounded-full bg-[#134F47]/10 text-[#134F47] text-xs font-black flex items-center justify-center flex-shrink-0">
                   {idx + 1}
                 </span>
@@ -198,9 +184,7 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <Table className="w-5 h-5 text-[#E85B0D]" />
             <span>2.6 {data.editorialCalendar.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.editorialCalendar.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.editorialCalendar.intro}</p>
         </div>
 
         <div className="overflow-x-auto rounded-xl border border-[#134F47]/15">
@@ -217,9 +201,7 @@ export const DirectorPlanningSection2View: React.FC = () => {
                   <td className="p-3 font-bold text-[#134F47] border-l border-[#134F47]/10 leading-relaxed">
                     {f.field}
                   </td>
-                  <td className="p-3 font-medium text-[#134F47]/90 leading-relaxed">
-                    {f.desc}
-                  </td>
+                  <td className="p-3 font-medium text-[#134F47]/90 leading-relaxed">{f.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -238,14 +220,15 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <Clock className="w-5 h-5 text-[#E85B0D]" />
             <span>2.7 {data.contentDistribution.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.contentDistribution.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.contentDistribution.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.contentDistribution.guidelines.map((g, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
               <span>{g}</span>
             </div>
@@ -264,15 +247,11 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <Users2 className="w-5 h-5 text-[#E85B0D]" />
             <span>2.8 {data.taskAssignment.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.taskAssignment.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.taskAssignment.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.taskAssignment.rolesIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.taskAssignment.rolesIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {data.taskAssignment.roles.map((role, idx) => (
               <div
@@ -303,18 +282,17 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <AlertCircle className="w-5 h-5 text-[#E85B0D]" />
             <span>2.9 {data.emergencyContent.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.emergencyContent.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.emergencyContent.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.emergencyContent.guidelinesIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.emergencyContent.guidelinesIntro}</p>
           <div className="space-y-2 pr-2">
             {data.emergencyContent.guidelines.map((g, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-5 h-5 rounded-full bg-[#134F47] text-white text-xs font-black flex items-center justify-center flex-shrink-0">
                   {idx + 1}
                 </span>
@@ -336,18 +314,17 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <Repeat className="w-5 h-5 text-[#E85B0D]" />
             <span>2.10 {data.contentRepurposing.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.contentRepurposing.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.contentRepurposing.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.contentRepurposing.examplesIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.contentRepurposing.examplesIntro}</p>
           <div className="space-y-2 pr-2">
             {data.contentRepurposing.examples.map((ex, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{ex}</span>
               </div>
@@ -367,9 +344,7 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <Sparkles className="w-5 h-5 text-[#E85B0D]" />
             <span>2.11 {data.planReviewAndDevelopment.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.planReviewAndDevelopment.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.planReviewAndDevelopment.intro}</p>
         </div>
 
         <div>
@@ -401,9 +376,7 @@ export const DirectorPlanningSection2View: React.FC = () => {
             <CheckCircle2 className="w-5 h-5 text-[#E85B0D]" />
             <span>2.12 {data.outputs.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">
-            {data.outputs.intro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">{data.outputs.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
@@ -419,8 +392,11 @@ export const DirectorPlanningSection2View: React.FC = () => {
             </div>
           ))}
         </div>
-      </section>
 
+        <div className="pt-2">
+          <TemplateCopyCard template={PLANNING_TEMPLATES.monthlyCalendar} />
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { Search, Menu, KeyRound, LogOut, ChevronDown } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Search, Menu, KeyRound, ChevronDown, UserRound, ShieldCheck, LogOut } from 'lucide-react';
 import { UserRole, ROLE_CONFIGS, RoleTabItem } from '../data/accessPins';
 import { NAVIGATION_STRUCTURE, MainTabDef } from '../data/navigationStructure';
 
@@ -26,6 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const activeBtnRef = useRef<HTMLButtonElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showSwitchConfirm, setShowSwitchConfirm] = useState(false);
 
   useEffect(() => {
     if (activeBtnRef.current && scrollContainerRef.current) {
@@ -65,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Center: Dynamic Navigation Tabs Tailored by Role */}
         <div 
           ref={scrollContainerRef}
-          className="flex-1 flex items-center justify-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar px-2"
+          className={`${currentRole === 'director' ? 'hidden md:flex' : 'flex'} flex-1 items-center justify-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar px-2`}
         >
           {isFullReference ? (
             // Admin / Full Reference: Master Pillar Tabs
@@ -111,16 +112,31 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Left: Role Switcher, Admin PINs button, and Search */}
         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           
-          {/* Active Role Switcher Pill */}
+          {/* Active Role Icon / Switcher */}
           {roleConfig && (
-            <button
-              onClick={onSwitchRole}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#FFF4E0] text-[#134F47] hover:bg-white text-xs font-black transition-all shadow-xs border border-[#FFF4E0]"
-              title="تبديل الدور أو تسجيل الخروج"
-            >
-              <span>{roleConfig.shortTitle}</span>
-              <ChevronDown className="w-3.5 h-3.5 text-[#E85B0D]" />
-            </button>
+            currentRole === 'director' ? (
+              <button
+                type="button"
+                onClick={() => setShowSwitchConfirm(true)}
+                className="relative w-9 h-9 flex items-center justify-center rounded-lg bg-[#FFF4E0] hover:bg-white text-[#71122B] transition-all shadow-xs border border-[#FFF4E0]"
+                title="مدير مكتب الهيئة — تسجيل الخروج وتبديل الدور"
+                aria-label="حساب مدير مكتب الهيئة وتبديل الدور"
+              >
+                <UserRound className="w-4 h-4 stroke-[2.3]" />
+                <span className="absolute -bottom-1 -left-1 bg-[#71122B] text-white p-0.5 rounded-full ring-1 ring-white flex items-center justify-center">
+                  <ShieldCheck className="w-2.5 h-2.5" />
+                </span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowSwitchConfirm(true)}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#FFF4E0] text-[#134F47] hover:bg-white text-xs font-black transition-all shadow-xs border border-[#FFF4E0]"
+                title="تبديل الدور أو تسجيل الخروج"
+              >
+                <span>{roleConfig.shortTitle}</span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#E85B0D]" />
+              </button>
+            )
           )}
 
           {/* Admin PIN Manager Button (for Admin only) */}
@@ -145,8 +161,8 @@ export const Header: React.FC<HeaderProps> = ({
             <Search className="w-4 h-4" />
           </button>
 
-          {/* Mobile Drawer (Only on Full Reference or Small screens) */}
-          {isFullReference && (
+          {/* Mobile Drawer (Full Reference or Director) */}
+          {(isFullReference || currentRole === 'director') && (
             <button
               onClick={onToggleDrawer}
               className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all md:hidden"
@@ -159,6 +175,50 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
       </div>
+
+      {/* Role Switch Confirmation Modal */}
+      {showSwitchConfirm && (
+        <div
+          className="fixed inset-0 z-[60] bg-[#0D2B26]/65 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setShowSwitchConfirm(false)}
+        >
+          <div
+            className="bg-white border-2 border-[#134F47]/20 rounded-2xl p-5 sm:p-6 w-full max-w-sm shadow-2xl text-right space-y-4 text-[#134F47]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-[#FFF4E0] text-[#71122B] flex items-center justify-center flex-shrink-0">
+                <LogOut className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-sm sm:text-base font-black text-[#134F47]">تأكيد تبديل الدور</h3>
+                <p className="text-xs text-[#134F47]/75 font-semibold">
+                  هل تريد تسجيل الخروج من دور مدير مكتب الهيئة وتبديل الدور؟
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center justify-end gap-2 pt-1">
+              <button
+                type="button"
+                onClick={() => setShowSwitchConfirm(false)}
+                className="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#134F47]/5 hover:bg-[#134F47]/10 text-[#134F47] transition-colors cursor-pointer"
+              >
+                إلغاء
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowSwitchConfirm(false);
+                  onSwitchRole();
+                }}
+                className="px-4 py-2 rounded-xl text-xs font-black bg-[#71122B] hover:bg-[#71122B]/90 text-white transition-colors cursor-pointer"
+              >
+                نعم، تبديل الدور
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

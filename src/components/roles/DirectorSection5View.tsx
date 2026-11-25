@@ -1,27 +1,27 @@
-import React from 'react';
-import { SECTION_5_CONTENT } from '../../data/roles/directorContentSection5';
 import {
-  ShieldAlert,
-  UserCheck,
-  UserCog,
-  Users,
-  Share2,
+  AlertTriangle,
+  Briefcase,
   Building,
-  Radio,
-  Table,
   CheckCircle2,
   Lock,
   Megaphone,
-  Briefcase,
-  AlertTriangle
+  Radio,
+  Share2,
+  ShieldAlert,
+  ShieldCheck,
+  Table,
+  UserCheck,
+  UserCog,
+  Users,
 } from 'lucide-react';
+import type React from 'react';
+import { SECTION_5_CONTENT } from '../../data/roles/directorContentSection5';
 
 export const DirectorSection5View: React.FC = () => {
   const data = SECTION_5_CONTENT;
 
   return (
     <div className="space-y-6 text-right font-cairo">
-      
       {/* 5.1 الإطار العام للصلاحيات */}
       <section className="bg-white border border-[#134F47]/15 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
         <div>
@@ -29,15 +29,11 @@ export const DirectorSection5View: React.FC = () => {
             <ShieldAlert className="w-5 h-5 text-[#E85B0D]" />
             <span>5.1 {data.generalFramework.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.generalFramework.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.generalFramework.intro}</p>
         </div>
 
         <div className="pt-2">
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">
-            {data.generalFramework.principlesIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">{data.generalFramework.principlesIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.generalFramework.principles.map((p, idx) => (
               <div
@@ -50,9 +46,7 @@ export const DirectorSection5View: React.FC = () => {
                   </span>
                   <span>{p.title}</span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#134F47]/80 leading-relaxed pr-7 font-medium">
-                  {p.desc}
-                </p>
+                <p className="text-xs sm:text-sm text-[#134F47]/80 leading-relaxed pr-7 font-medium">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -66,14 +60,15 @@ export const DirectorSection5View: React.FC = () => {
             <UserCheck className="w-5 h-5 text-[#E85B0D]" />
             <span>5.2 {data.directorAuthorities.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.directorAuthorities.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.directorAuthorities.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.directorAuthorities.authorities.map((auth, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
               <span>{auth}</span>
             </div>
@@ -92,14 +87,15 @@ export const DirectorSection5View: React.FC = () => {
             <UserCog className="w-5 h-5 text-[#E85B0D]" />
             <span>5.3 {data.deputyAuthorities.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.deputyAuthorities.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.deputyAuthorities.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.deputyAuthorities.authorities.map((auth, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
               <span>{auth}</span>
             </div>
@@ -122,14 +118,15 @@ export const DirectorSection5View: React.FC = () => {
             <Users className="w-5 h-5 text-[#E85B0D]" />
             <span>5.4 {data.membersAuthorities.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.membersAuthorities.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.membersAuthorities.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.membersAuthorities.rights.map((right, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
               <span>{right}</span>
             </div>
@@ -177,18 +174,17 @@ export const DirectorSection5View: React.FC = () => {
             <Building className="w-5 h-5 text-[#E85B0D]" />
             <span>5.6 {data.unionHeadAuthorities.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.unionHeadAuthorities.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.unionHeadAuthorities.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.unionHeadAuthorities.casesIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.unionHeadAuthorities.casesIntro}</p>
           <div className="space-y-2 pr-2">
             {data.unionHeadAuthorities.cases.map((c, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-5 h-5 rounded-full bg-[#134F47]/10 text-[#134F47] text-xs font-black flex items-center justify-center flex-shrink-0">
                   {idx + 1}
                 </span>
@@ -210,14 +206,15 @@ export const DirectorSection5View: React.FC = () => {
             <Radio className="w-5 h-5 text-[#E85B0D]" />
             <span>5.7 {data.centralMediaAuthorities.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.centralMediaAuthorities.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.centralMediaAuthorities.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.centralMediaAuthorities.authorities.map((auth, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
               <span>{auth}</span>
             </div>
@@ -236,17 +233,17 @@ export const DirectorSection5View: React.FC = () => {
             <Table className="w-5 h-5 text-[#E85B0D]" />
             <span>5.8 {data.authorityMatrix.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.authorityMatrix.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.authorityMatrix.intro}</p>
         </div>
 
         <div className="overflow-x-auto rounded-xl border border-[#134F47]/15">
           <table className="w-full text-right text-xs sm:text-sm border-collapse">
             <thead>
               <tr className="bg-[#134F47] text-white">
-                <th className="p-3 font-black border-l border-white/20 w-1/2">المجال</th>
-                <th className="p-3 font-black w-1/2">صاحب الصلاحية أو المسؤولية</th>
+                <th className="p-3 font-black border-l border-white/20">المجال</th>
+                <th className="p-3 font-black border-l border-white/20">المنفذ (R)</th>
+                <th className="p-3 font-black border-l border-white/20">صاحب الاعتماد (A)</th>
+                <th className="p-3 font-black">يُحاط علماً (I)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#134F47]/10">
@@ -255,9 +252,13 @@ export const DirectorSection5View: React.FC = () => {
                   <td className="p-3 font-bold text-[#134F47] border-l border-[#134F47]/10 leading-relaxed">
                     {row.domain}
                   </td>
-                  <td className="p-3 font-medium text-[#134F47]/90 leading-relaxed">
-                    {row.authority}
+                  <td className="p-3 font-medium text-[#134F47]/90 border-l border-[#134F47]/10 leading-relaxed">
+                    {row.executor}
                   </td>
+                  <td className="p-3 font-bold text-[#71122B] border-l border-[#134F47]/10 leading-relaxed">
+                    {row.approver}
+                  </td>
+                  <td className="p-3 font-medium text-[#134F47]/80 leading-relaxed">{row.informed}</td>
                 </tr>
               ))}
             </tbody>
@@ -292,12 +293,8 @@ export const DirectorSection5View: React.FC = () => {
                 {st.num}
               </span>
               <div className="space-y-1">
-                <h4 className="text-sm sm:text-base font-black text-[#134F47]">
-                  {st.title}
-                </h4>
-                <p className="text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
-                  {st.desc}
-                </p>
+                <h4 className="text-sm sm:text-base font-black text-[#134F47]">{st.title}</h4>
+                <p className="text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">{st.desc}</p>
               </div>
             </div>
           ))}
@@ -310,7 +307,10 @@ export const DirectorSection5View: React.FC = () => {
           </p>
           <div className="space-y-2 pr-2">
             {data.contentWorkflowAndControls.controls.map((ctrl, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{ctrl}</span>
               </div>
@@ -326,9 +326,7 @@ export const DirectorSection5View: React.FC = () => {
             <Lock className="w-5 h-5 text-[#E85B0D]" />
             <span>5.10 {data.digitalSecurityControls.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.digitalSecurityControls.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.digitalSecurityControls.intro}</p>
         </div>
 
         <div>
@@ -337,7 +335,10 @@ export const DirectorSection5View: React.FC = () => {
           </p>
           <div className="space-y-2 pr-2">
             {data.digitalSecurityControls.controls.map((ctrl, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{ctrl}</span>
               </div>
@@ -360,7 +361,10 @@ export const DirectorSection5View: React.FC = () => {
 
         <div className="space-y-2.5 pr-2">
           {data.officialStatementsControls.controls.map((ctrl, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/90 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/90 font-medium leading-relaxed"
+            >
               <span className="w-5 h-5 rounded-full bg-[#134F47]/10 text-[#134F47] text-xs font-black flex items-center justify-center flex-shrink-0">
                 {idx + 1}
               </span>
@@ -413,7 +417,10 @@ export const DirectorSection5View: React.FC = () => {
           </p>
           <div className="space-y-2 pr-2">
             {data.emergencyAndExceptionalHandling.guidelines.map((g, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-5 h-5 rounded-full bg-[#134F47] text-white text-xs font-black flex items-center justify-center flex-shrink-0">
                   {idx + 1}
                 </span>
@@ -428,6 +435,39 @@ export const DirectorSection5View: React.FC = () => {
         </div>
       </section>
 
+      {/* 5.14 ضوابط الخصوصية وأذونات التصوير والذكاء الاصطناعي */}
+      <section className="bg-white border border-[#134F47]/15 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div>
+          <h3 className="text-base sm:text-lg font-black text-[#134F47] mb-2 flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-[#E85B0D]" />
+            <span>5.14 {data.privacyAndAiControls.title}</span>
+          </h3>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.privacyAndAiControls.intro}</p>
+        </div>
+
+        <div className="space-y-3">
+          {data.privacyAndAiControls.pillars.map((pillar, pIdx) => (
+            <div key={pIdx} className="p-4 rounded-xl bg-[#FFF4E0]/25 border border-[#134F47]/10 space-y-2.5">
+              <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{pillar.title}</h4>
+              <div className="space-y-2 pr-2">
+                {pillar.points.map((pt, ptIdx) => (
+                  <div
+                    key={ptIdx}
+                    className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
+                    <span>{pt}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="p-3.5 rounded-xl bg-[#FFF8F6] border border-[#C51A1B]/25 border-r-4 border-r-[#C51A1B] text-xs sm:text-sm font-bold text-[#71122B] leading-relaxed">
+          {data.privacyAndAiControls.closingWarning}
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,28 +1,29 @@
-import React from 'react';
-import { PLANNING_SECTION_3_CONTENT } from '../../data/roles/directorPlanningContentSection3';
 import {
-  Sparkles,
+  AlertTriangle,
+  Archive,
+  BarChart,
+  Camera,
+  CheckCircle2,
+  CheckSquare,
+  FileSpreadsheet,
+  Film,
+  Flag,
   Inbox,
   Layers,
-  FileSpreadsheet,
-  CheckSquare,
-  Users,
-  Camera,
-  Film,
   Send,
-  AlertTriangle,
-  Flag,
-  BarChart,
-  Archive,
-  CheckCircle2
+  Sparkles,
+  Users,
 } from 'lucide-react';
+import type React from 'react';
+import { PLANNING_SECTION_3_CONTENT } from '../../data/roles/directorPlanningContentSection3';
+import { EVENT_CLASSIFICATION_MATRIX, PLANNING_TEMPLATES } from '../../data/roles/directorPlanningTemplates';
+import { TemplateCopyCard } from './shared/TemplateCopyCard';
 
 export const DirectorPlanningSection3View: React.FC = () => {
   const data = PLANNING_SECTION_3_CONTENT;
 
   return (
     <div className="space-y-6 text-right font-cairo">
-      
       {/* 3.1 مفهوم إدارة الفعاليات إعلامياً */}
       <section className="bg-white border border-[#134F47]/15 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
         <div>
@@ -45,19 +46,13 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <Inbox className="w-5 h-5 text-[#E85B0D]" />
             <span>3.2 {data.requestReception.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.requestReception.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.requestReception.intro}</p>
         </div>
 
         {/* أولاً: المعلومات المطلوبة في طلب التغطية */}
         <div className="p-4 rounded-xl border border-[#134F47]/15 bg-[#FFF4E0]/20 space-y-3">
-          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
-            {data.requestReception.part1.title}
-          </h4>
-          <p className="text-xs sm:text-sm text-[#134F47]/85 font-medium">
-            {data.requestReception.part1.intro}
-          </p>
+          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{data.requestReception.part1.title}</h4>
+          <p className="text-xs sm:text-sm text-[#134F47]/85 font-medium">{data.requestReception.part1.intro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {data.requestReception.part1.items.map((item, idx) => (
               <div
@@ -76,12 +71,8 @@ export const DirectorPlanningSection3View: React.FC = () => {
 
         {/* ثانياً: دراسة الطلب وتحديد إمكانية التنفيذ */}
         <div className="p-4 rounded-xl border border-[#134F47]/15 bg-[#FFF4E0]/20 space-y-3">
-          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
-            {data.requestReception.part2.title}
-          </h4>
-          <p className="text-xs sm:text-sm text-[#134F47]/85 font-medium">
-            {data.requestReception.part2.intro}
-          </p>
+          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{data.requestReception.part2.title}</h4>
+          <p className="text-xs sm:text-sm text-[#134F47]/85 font-medium">{data.requestReception.part2.intro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {data.requestReception.part2.points.map((pt, idx) => (
               <div
@@ -101,9 +92,7 @@ export const DirectorPlanningSection3View: React.FC = () => {
         {/* ثالثاً ورابعاً: ترتيب الأولويات وتأكيد التغطية */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div className="p-4 rounded-xl border border-[#134F47]/15 bg-[#FFF4E0]/25 space-y-2">
-            <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
-              {data.requestReception.part3.title}
-            </h4>
+            <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{data.requestReception.part3.title}</h4>
             <div className="space-y-2 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
               {data.requestReception.part3.paragraphs.map((p, idx) => (
                 <p key={idx}>{p}</p>
@@ -112,9 +101,7 @@ export const DirectorPlanningSection3View: React.FC = () => {
           </div>
 
           <div className="p-4 rounded-xl border border-[#134F47]/15 bg-[#FFF4E0]/25 space-y-2">
-            <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
-              {data.requestReception.part4.title}
-            </h4>
+            <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{data.requestReception.part4.title}</h4>
             <div className="space-y-2 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
               {data.requestReception.part4.paragraphs.map((p, idx) => (
                 <p key={idx}>{p}</p>
@@ -131,27 +118,18 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <Layers className="w-5 h-5 text-[#E85B0D]" />
             <span>3.3 {data.eventClassification.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.eventClassification.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.eventClassification.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {data.eventClassification.categories.map((cat, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-xl bg-[#FFF4E0]/20 border border-[#134F47]/10 flex flex-col gap-2"
-            >
+            <div key={idx} className="p-4 rounded-xl bg-[#FFF4E0]/20 border border-[#134F47]/10 flex flex-col gap-2">
               <div className="flex items-center gap-2 font-black text-xs sm:text-sm text-[#134F47]">
                 <span className="w-2 h-2 rounded-full bg-[#E85B0D]" />
                 <span>{cat.title}</span>
               </div>
-              <p className="text-xs sm:text-sm text-[#134F47]/85 leading-relaxed font-medium">
-                {cat.desc}
-              </p>
-              <p className="text-xs text-[#E85B0D] font-bold mt-auto pt-1">
-                {cat.details}
-              </p>
+              <p className="text-xs sm:text-sm text-[#134F47]/85 leading-relaxed font-medium">{cat.desc}</p>
+              <p className="text-xs text-[#E85B0D] font-bold mt-auto pt-1">{cat.details}</p>
             </div>
           ))}
         </div>
@@ -168,9 +146,7 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <FileSpreadsheet className="w-5 h-5 text-[#E85B0D]" />
             <span>3.4 {data.coveragePlanPrep.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.coveragePlanPrep.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.coveragePlanPrep.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -199,14 +175,15 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <CheckSquare className="w-5 h-5 text-[#E85B0D]" />
             <span>3.5 {data.preEventPrep.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.preEventPrep.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.preEventPrep.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.preEventPrep.tasks.map((task, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
               <span>{task}</span>
             </div>
@@ -221,9 +198,7 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <Users className="w-5 h-5 text-[#E85B0D]" />
             <span>3.6 {data.teamOrganization.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.teamOrganization.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.teamOrganization.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
@@ -255,14 +230,15 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <Camera className="w-5 h-5 text-[#E85B0D]" />
             <span>3.7 {data.executionDuringEvent.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.executionDuringEvent.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.executionDuringEvent.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.executionDuringEvent.guidelines.map((g, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-5 h-5 rounded-full bg-[#134F47]/10 text-[#134F47] text-xs font-black flex items-center justify-center flex-shrink-0">
                 {idx + 1}
               </span>
@@ -279,14 +255,15 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <Film className="w-5 h-5 text-[#E85B0D]" />
             <span>3.8 {data.materialsManagement.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.materialsManagement.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.materialsManagement.intro}</p>
         </div>
 
         <div className="space-y-2 pr-2">
           {data.materialsManagement.tasks.map((task, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+            <div
+              key={idx}
+              className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
               <span>{task}</span>
             </div>
@@ -320,7 +297,10 @@ export const DirectorPlanningSection3View: React.FC = () => {
           </p>
           <div className="space-y-2 pr-2">
             {data.publishingAndLiveCoverage.guidelines.map((g, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{g}</span>
               </div>
@@ -340,18 +320,17 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <AlertTriangle className="w-5 h-5 text-[#E85B0D]" />
             <span>3.10 {data.emergencyHandling.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.emergencyHandling.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.emergencyHandling.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.emergencyHandling.dutiesIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.emergencyHandling.dutiesIntro}</p>
           <div className="space-y-2 pr-2">
             {data.emergencyHandling.duties.map((duty, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">
+              <div
+                key={idx}
+                className="flex items-start gap-2.5 text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E85B0D] flex-shrink-0 mt-2" />
                 <span>{duty}</span>
               </div>
@@ -367,9 +346,7 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <Flag className="w-5 h-5 text-[#E85B0D]" />
             <span>3.11 {data.postEventCoverage.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.postEventCoverage.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.postEventCoverage.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -394,15 +371,11 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <BarChart className="w-5 h-5 text-[#E85B0D]" />
             <span>3.12 {data.coverageEvaluation.title}</span>
           </h3>
-          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">
-            {data.coverageEvaluation.intro}
-          </p>
+          <p className="text-sm text-[#134F47]/90 leading-relaxed font-medium">{data.coverageEvaluation.intro}</p>
         </div>
 
         <div>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">
-            {data.coverageEvaluation.aspectsIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-2.5">{data.coverageEvaluation.aspectsIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {data.coverageEvaluation.aspects.map((asp, idx) => (
               <div
@@ -467,9 +440,7 @@ export const DirectorPlanningSection3View: React.FC = () => {
             <CheckCircle2 className="w-5 h-5 text-[#E85B0D]" />
             <span>3.14 {data.outputs.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">
-            {data.outputs.intro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">{data.outputs.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
@@ -489,8 +460,42 @@ export const DirectorPlanningSection3View: React.FC = () => {
         <div className="p-4 rounded-xl bg-[#FFF4E0]/40 border border-[#134F47]/15 text-xs sm:text-sm text-[#134F47]/95 font-bold leading-relaxed">
           {data.outputs.successMeasure}
         </div>
-      </section>
 
+        {/* Event Tier Classification Matrix */}
+        <div className="pt-2 space-y-2.5">
+          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
+            مصفوفة تصنيف الفعاليات ومخرجاتها الاسترشادية:
+          </h4>
+          <div className="overflow-x-auto rounded-xl border border-[#134F47]/20 shadow-xs">
+            <table className="w-full text-right text-xs sm:text-sm">
+              <thead className="bg-[#134F47] text-[#FFF4E0]">
+                <tr>
+                  <th className="py-2.5 px-3 font-black border-l border-white/10">مستوى الفعالية</th>
+                  <th className="py-2.5 px-3 font-black border-l border-white/10">المعيار</th>
+                  <th className="py-2.5 px-3 font-black border-l border-white/10">المخرجات المطلوبة</th>
+                  <th className="py-2.5 px-3 font-black">التحضير والفريق</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#134F47]/10">
+                {EVENT_CLASSIFICATION_MATRIX.map((row, idx) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-[#FFF4E0]/20'}>
+                    <td className="py-2.5 px-3 font-black text-[#134F47] border-l border-[#134F47]/10">{row.tier}</td>
+                    <td className="py-2.5 px-3 text-[#134F47]/85 font-medium border-l border-[#134F47]/10">
+                      {row.criteria}
+                    </td>
+                    <td className="py-2.5 px-3 text-[#134F47]/90 font-semibold border-l border-[#134F47]/10">
+                      {row.requiredOutputs}
+                    </td>
+                    <td className="py-2.5 px-3 text-[#E85B0D] font-bold">{row.leadTimeAndTeam}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <TemplateCopyCard template={PLANNING_TEMPLATES.eventCoveragePlan} />
+      </section>
     </div>
   );
 };

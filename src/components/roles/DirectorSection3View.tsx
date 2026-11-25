@@ -1,28 +1,30 @@
-import React from 'react';
-import { SECTION_3_CONTENT } from '../../data/roles/directorContentSection3';
 import {
-  Users,
-  Network,
-  UserCheck,
-  UserPlus,
-  PenTool,
   Camera,
+  CheckSquare,
   Film,
-  Share2,
   FolderArchive,
   Layers,
-  SlidersHorizontal,
-  CheckSquare,
   MessageSquare,
-  Repeat
+  Network,
+  PackageCheck,
+  PenTool,
+  Repeat,
+  Share2,
+  SlidersHorizontal,
+  UserCheck,
+  UserPlus,
+  Users,
 } from 'lucide-react';
+import type React from 'react';
+import { SECTION_3_CONTENT } from '../../data/roles/directorContentSection3';
+import { MANAGEMENT_TEMPLATES } from '../../data/roles/directorManagementTemplates';
+import { TemplateCopyCard } from './shared/TemplateCopyCard';
 
 export const DirectorSection3View: React.FC = () => {
   const data = SECTION_3_CONTENT;
 
   return (
     <div className="space-y-6 text-right font-cairo">
-      
       {/* 3.1 التشكيل التنظيمي للمكتب الإعلامي */}
       <section className="bg-white border border-[#134F47]/15 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
         <div>
@@ -38,9 +40,7 @@ export const DirectorSection3View: React.FC = () => {
         </div>
 
         <div className="pt-2">
-          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">
-            {data.orgStructure.levelsIntro}
-          </p>
+          <p className="text-xs sm:text-sm font-bold text-[#134F47] mb-3">{data.orgStructure.levelsIntro}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {data.orgStructure.levels.map((lvl, idx) => (
               <div
@@ -50,9 +50,7 @@ export const DirectorSection3View: React.FC = () => {
                 <span className="w-6 h-6 rounded-full bg-[#134F47] text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">
                   {idx + 1}
                 </span>
-                <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">
-                  {lvl}
-                </span>
+                <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">{lvl}</span>
               </div>
             ))}
           </div>
@@ -70,27 +68,18 @@ export const DirectorSection3View: React.FC = () => {
 
         {/* Visual Org Tree */}
         <div className="max-w-3xl mx-auto flex flex-col items-center gap-4 text-center">
-          
           {/* Level 1: Director */}
           <div className="w-full max-w-xs p-4 rounded-2xl bg-[#134F47] text-white shadow-md border-2 border-[#134F47]">
-            <h4 className="text-sm sm:text-base font-black text-white">
-              {data.jobChart.director.title}
-            </h4>
-            <p className="text-xs text-[#FFF4E0]/85 font-medium mt-0.5">
-              {data.jobChart.director.subtitle}
-            </p>
+            <h4 className="text-sm sm:text-base font-black text-white">{data.jobChart.director.title}</h4>
+            <p className="text-xs text-[#FFF4E0]/85 font-medium mt-0.5">{data.jobChart.director.subtitle}</p>
           </div>
 
           <div className="w-0.5 h-6 bg-[#134F47]/30" />
 
           {/* Level 2: Deputy */}
           <div className="w-full max-w-xs p-3.5 rounded-2xl bg-[#FFF4E0] border-2 border-[#134F47]/30 shadow-xs">
-            <h4 className="text-sm font-black text-[#134F47]">
-              {data.jobChart.deputy.title}
-            </h4>
-            <p className="text-xs text-[#134F47]/80 font-medium mt-0.5">
-              {data.jobChart.deputy.subtitle}
-            </p>
+            <h4 className="text-sm font-black text-[#134F47]">{data.jobChart.deputy.title}</h4>
+            <p className="text-xs text-[#134F47]/80 font-medium mt-0.5">{data.jobChart.deputy.subtitle}</p>
           </div>
 
           <div className="w-0.5 h-6 bg-[#134F47]/30" />
@@ -102,12 +91,8 @@ export const DirectorSection3View: React.FC = () => {
                 key={rIdx}
                 className="p-3.5 rounded-xl bg-white border-2 border-[#134F47]/15 shadow-xs flex flex-col justify-between"
               >
-                <h5 className="text-xs sm:text-sm font-black text-[#134F47]">
-                  {r.title}
-                </h5>
-                <p className="text-[11px] text-[#134F47]/70 font-semibold mt-1">
-                  {r.subtitle}
-                </p>
+                <h5 className="text-xs sm:text-sm font-black text-[#134F47]">{r.title}</h5>
+                <p className="text-[11px] text-[#134F47]/70 font-semibold mt-1">{r.subtitle}</p>
               </div>
             ))}
           </div>
@@ -116,14 +101,9 @@ export const DirectorSection3View: React.FC = () => {
 
           {/* Level 4: Members & Volunteers */}
           <div className="w-full max-w-md p-3.5 rounded-2xl bg-[#FFF4E0]/50 border border-dashed border-[#134F47]/30">
-            <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
-              {data.jobChart.members.title}
-            </h4>
-            <p className="text-xs text-[#134F47]/75 font-medium mt-0.5">
-              {data.jobChart.members.subtitle}
-            </p>
+            <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{data.jobChart.members.title}</h4>
+            <p className="text-xs text-[#134F47]/75 font-medium mt-0.5">{data.jobChart.members.subtitle}</p>
           </div>
-
         </div>
 
         <div className="p-3.5 rounded-xl bg-[#FFF4E0]/40 border border-[#134F47]/10 text-xs sm:text-sm font-bold text-[#134F47]/80 leading-relaxed">
@@ -137,9 +117,7 @@ export const DirectorSection3View: React.FC = () => {
           <UserCheck className="w-5 h-5 text-[#E85B0D]" />
           <span>{data.directorRole.title}</span>
         </h3>
-        <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-          {data.directorRole.intro}
-        </p>
+        <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.directorRole.intro}</p>
         <ul className="space-y-2 pr-3 border-r-2 border-[#134F47]/20 pt-1">
           {data.directorRole.items.map((it, idx) => (
             <li key={idx} className="text-xs sm:text-sm font-medium text-[#134F47]">
@@ -156,9 +134,7 @@ export const DirectorSection3View: React.FC = () => {
             <UserPlus className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.deputyRole.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.deputyRole.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.deputyRole.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -170,17 +146,13 @@ export const DirectorSection3View: React.FC = () => {
               <span className="w-6 h-6 rounded-full bg-[#134F47] text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">
                 {idx + 1}
               </span>
-              <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">
-                {it}
-              </span>
+              <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">{it}</span>
             </div>
           ))}
         </div>
 
         <div className="p-4 rounded-xl bg-[#FFF4E0]/50 border-r-4 border-r-[#134F47] space-y-2">
-          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
-            {data.deputyRole.authorityTitle}
-          </h4>
+          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{data.deputyRole.authorityTitle}</h4>
           <ul className="space-y-1.5 pr-2">
             {data.deputyRole.authorityPoints.map((pt, pIdx) => (
               <li key={pIdx} className="text-xs sm:text-sm font-medium text-[#134F47]">
@@ -198,9 +170,7 @@ export const DirectorSection3View: React.FC = () => {
             <PenTool className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.editorialRole.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.editorialRole.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.editorialRole.intro}</p>
         </div>
 
         <ul className="space-y-2 pr-3 border-r-2 border-[#134F47]/20">
@@ -223,9 +193,7 @@ export const DirectorSection3View: React.FC = () => {
             <Camera className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.photographyRole.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.photographyRole.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.photographyRole.intro}</p>
         </div>
 
         <ul className="space-y-2 pr-3 border-r-2 border-[#134F47]/20">
@@ -248,9 +216,7 @@ export const DirectorSection3View: React.FC = () => {
             <Film className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.designMontageRole.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.designMontageRole.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.designMontageRole.intro}</p>
         </div>
 
         <ul className="space-y-2 pr-3 border-r-2 border-[#134F47]/20">
@@ -273,9 +239,7 @@ export const DirectorSection3View: React.FC = () => {
             <Share2 className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.platformsRole.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.platformsRole.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.platformsRole.intro}</p>
         </div>
 
         <ul className="space-y-2 pr-3 border-r-2 border-[#134F47]/20">
@@ -298,9 +262,7 @@ export const DirectorSection3View: React.FC = () => {
             <FolderArchive className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.archivingRole.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.archivingRole.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.archivingRole.intro}</p>
         </div>
 
         <ul className="space-y-2 pr-3 border-r-2 border-[#134F47]/20">
@@ -323,15 +285,11 @@ export const DirectorSection3View: React.FC = () => {
             <Layers className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.formationModels.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.formationModels.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.formationModels.intro}</p>
         </div>
 
         <div className="p-4 rounded-xl bg-[#FFF4E0]/30 border border-[#134F47]/10 space-y-2">
-          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">
-            {data.formationModels.considerationsTitle}
-          </h4>
+          <h4 className="text-xs sm:text-sm font-black text-[#134F47]">{data.formationModels.considerationsTitle}</h4>
           <ul className="space-y-1.5 pr-3 border-r-2 border-[#134F47]/20">
             {data.formationModels.considerations.map((c, cIdx) => (
               <li key={cIdx} className="text-xs sm:text-sm font-medium text-[#134F47]">
@@ -349,12 +307,8 @@ export const DirectorSection3View: React.FC = () => {
               className="p-5 rounded-2xl border-2 border-[#134F47]/20 bg-gradient-to-b from-white to-[#FFF4E0]/25 flex flex-col justify-between"
             >
               <div>
-                <h4 className="text-sm font-black text-[#134F47] mb-0.5">
-                  {mod.name}
-                </h4>
-                <p className="text-xs font-bold text-[#E85B0D] pb-2 mb-3 border-b border-[#134F47]/10">
-                  {mod.desc}
-                </p>
+                <h4 className="text-sm font-black text-[#134F47] mb-0.5">{mod.name}</h4>
+                <p className="text-xs font-bold text-[#E85B0D] pb-2 mb-3 border-b border-[#134F47]/10">{mod.desc}</p>
                 <ul className="space-y-1.5 pr-2 border-r-2 border-[#134F47]/15">
                   {mod.points.map((pt, pIdx) => (
                     <li key={pIdx} className="text-xs sm:text-sm font-medium text-[#134F47]/90 leading-relaxed">
@@ -379,9 +333,7 @@ export const DirectorSection3View: React.FC = () => {
             <SlidersHorizontal className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.distributionRules.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.distributionRules.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.distributionRules.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -393,9 +345,7 @@ export const DirectorSection3View: React.FC = () => {
               <span className="w-6 h-6 rounded-full bg-[#134F47] text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">
                 {idx + 1}
               </span>
-              <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">
-                {it}
-              </span>
+              <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">{it}</span>
             </div>
           ))}
         </div>
@@ -408,9 +358,7 @@ export const DirectorSection3View: React.FC = () => {
             <CheckSquare className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.taskWorkflow.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.taskWorkflow.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.taskWorkflow.intro}</p>
         </div>
 
         <div className="overflow-x-auto rounded-xl border border-[#134F47]/20 shadow-xs">
@@ -427,9 +375,7 @@ export const DirectorSection3View: React.FC = () => {
                   <td className="py-2.5 px-4 font-black text-[#134F47] bg-[#FFF4E0]/20 border-l border-[#134F47]/10">
                     {row.stage}
                   </td>
-                  <td className="py-2.5 px-4 text-[#134F47]/90 font-medium">
-                    {row.action}
-                  </td>
+                  <td className="py-2.5 px-4 text-[#134F47]/90 font-medium">{row.action}</td>
                 </tr>
               ))}
             </tbody>
@@ -448,9 +394,7 @@ export const DirectorSection3View: React.FC = () => {
             <MessageSquare className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.internalCommunication.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.internalCommunication.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.internalCommunication.intro}</p>
         </div>
 
         <ul className="space-y-2 pr-3 border-r-2 border-[#134F47]/20">
@@ -473,9 +417,7 @@ export const DirectorSection3View: React.FC = () => {
             <Repeat className="w-5 h-5 text-[#E85B0D]" />
             <span>{data.handover.title}</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">
-            {data.handover.intro}
-          </p>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold">{data.handover.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -487,9 +429,7 @@ export const DirectorSection3View: React.FC = () => {
               <span className="w-6 h-6 rounded-full bg-[#134F47] text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">
                 {idx + 1}
               </span>
-              <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">
-                {it}
-              </span>
+              <span className="text-xs sm:text-sm font-medium text-[#134F47] leading-relaxed">{it}</span>
             </div>
           ))}
         </div>
@@ -497,8 +437,37 @@ export const DirectorSection3View: React.FC = () => {
         <div className="p-3.5 rounded-xl bg-[#FFF4E0] border-r-4 border-r-[#134F47] text-xs sm:text-sm font-black text-[#134F47]">
           {data.handover.conclusion}
         </div>
+
+        <TemplateCopyCard template={MANAGEMENT_TEMPLATES.handover} />
       </section>
 
+      {/* 3.15 ميثاق إدارة المعدات والعهدة اللوجستية */}
+      <section className="bg-white border border-[#134F47]/15 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div>
+          <h3 className="text-base sm:text-lg font-black text-[#134F47] mb-1 flex items-center gap-2">
+            <PackageCheck className="w-5 h-5 text-[#E85B0D]" />
+            <span>{data.equipmentCustody.title}</span>
+          </h3>
+          <p className="text-xs sm:text-sm text-[#134F47]/75 font-semibold leading-relaxed">
+            {data.equipmentCustody.intro}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {data.equipmentCustody.rules.map((r, rIdx) => (
+            <div key={rIdx} className="p-3.5 rounded-xl bg-[#FFF4E0]/25 border border-[#134F47]/10 space-y-1">
+              <div className="font-black text-xs sm:text-sm text-[#134F47]">
+                {rIdx + 1}. {r.title}
+              </div>
+              <p className="text-xs sm:text-sm text-[#134F47]/85 font-medium leading-relaxed">{r.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="p-3 rounded-xl bg-[#134F47]/5 border-r-4 border-[#134F47] text-xs sm:text-sm font-bold text-[#134F47] leading-relaxed">
+          {data.equipmentCustody.note}
+        </div>
+      </section>
     </div>
   );
 };
